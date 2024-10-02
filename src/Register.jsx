@@ -760,7 +760,7 @@ export default function Register() {
                   name="dateofbirth"
                   control={control}
                   rules={{
-                    required: "Birth year is required",
+                    required: "Date of birth is required",
                     validate: {
                       min: (value) => {
                         const year = new Date(value).getFullYear(); 
