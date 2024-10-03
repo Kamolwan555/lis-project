@@ -182,7 +182,7 @@ export default function Register() {
                   htmlFor="email"
                   className="flex items-center mb-2 text-gray-600 text-sm font-medium"
                 >
-                  Email
+                  Email address
                   <svg
                     width="7"
                     height="7"
@@ -201,7 +201,7 @@ export default function Register() {
                     name="email"
                     control={control}
                     rules={{
-                      required: "Email is Required",
+                      required: "Email address is Required",
                       pattern: {
                         value:
                           /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
@@ -219,7 +219,7 @@ export default function Register() {
                         type="email"
                         placeholder="someone@gmail.com"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.email?.message ? "ring-red-500" : ""
+                          errors?.email?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -272,7 +272,7 @@ export default function Register() {
                         type="text"
                         placeholder="username"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.username?.message ? "ring-red-500" : ""
+                          errors?.username?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -333,7 +333,7 @@ export default function Register() {
                         placeholder="password"
                         autoComplete="password"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.password?.message ? "ring-red-500" : ""
+                          errors?.password?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -388,7 +388,7 @@ export default function Register() {
                         placeholder="confirm password"
                         autoComplete="confirm-password"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.confirmpassword?.message ? "ring-red-500" : ""
+                          errors?.confirmpassword?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -498,7 +498,7 @@ export default function Register() {
                       type="number"
                       className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
                         errors?.thainationalidcard?.message
-                          ? "ring-red-500"
+                          ? "ring-red-500 ring-2"
                           : ""
                       }`}
                     />
@@ -548,7 +548,7 @@ export default function Register() {
                           id="prefix"
                           name="prefix"
                           className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                            errors?.prefix?.message ? "ring-red-500" : ""
+                            errors?.prefix?.message ? "ring-red-500 ring-2" : ""
                           }`}
                         >
                           <option value="" disabled selected>
@@ -613,7 +613,7 @@ export default function Register() {
                         type="text"
                         autoComplete="given-name"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.firstname?.message ? "ring-red-500" : ""
+                          errors?.firstname?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -662,7 +662,7 @@ export default function Register() {
                         type="text"
                         autoComplete="family-name"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.lastname?.message ? "ring-red-500" : ""
+                          errors?.lastname?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -710,7 +710,7 @@ export default function Register() {
                         id="gender"
                         name="gender"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.gender?.message ? "ring-red-500" : ""
+                          errors?.gender?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       >
                         <option value="" disabled selected>
@@ -788,7 +788,7 @@ export default function Register() {
                       id="dateofbirth"
                       name="dateofbirth"
                       className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                        errors?.dateofbirth?.message ? "ring-red-500" : ""
+                        errors?.dateofbirth?.message ? "ring-red-500 ring-2" : ""
                       }`}
                     />
                   )}
@@ -836,7 +836,7 @@ export default function Register() {
                           id="ethnicity"
                           name="ethnicity"
                           className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                            errors?.ethnicity?.message ? "ring-red-500" : ""
+                            errors?.ethnicity?.message ? "ring-red-500 ring-2" : ""
                           }`}
                         >
                           <option value="" disabled selected>
@@ -905,7 +905,7 @@ export default function Register() {
                           id="nationality"
                           name="nationality"
                           className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                            errors?.nationality?.message ? "ring-red-500" : ""
+                            errors?.nationality?.message ? "ring-red-500 ring-2" : ""
                           }`}
                         >
                           <option value="" disabled selected>
@@ -974,7 +974,7 @@ export default function Register() {
                           id="religion"
                           name="religion"
                           className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                            errors?.religion?.message ? "ring-red-500" : ""
+                            errors?.religion?.message ? "ring-red-500 ring-2" : ""
                           }`}
                         >
                           <option value="" disabled selected>
@@ -1036,7 +1036,7 @@ export default function Register() {
                           id="maritalstatus"
                           name="maritalstatus"
                           className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                            errors?.maritalstatus?.message ? "ring-red-500" : ""
+                            errors?.maritalstatus?.message ? "ring-red-500 ring-2" : ""
                           }`}
                         >
                           <option value="" disabled selected>
@@ -1096,7 +1096,7 @@ export default function Register() {
                           id="bloodgroup"
                           name="bloodgroup"
                           className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                            errors?.bloodgroup?.message ? "ring-red-500" : ""
+                            errors?.bloodgroup?.message ? "ring-red-500 ring-2" : ""
                           }`}
                         >
                           <option value="" disabled selected>
@@ -1158,7 +1158,7 @@ export default function Register() {
                           name="historyofallergy"
                           className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
                             errors?.historyofallergy?.message
-                              ? "ring-red-500"
+                              ? "ring-red-500 ring-2"
                               : ""
                           }`}
                         >
@@ -1259,7 +1259,7 @@ export default function Register() {
                       name="addressinthailand"
                       type="text"
                       className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                        errors?.addressinthailand?.message ? "ring-red-500" : ""
+                        errors?.addressinthailand?.message ? "ring-red-500 ring-2" : ""
                       }`}
                     />
                   )}
@@ -1372,7 +1372,7 @@ export default function Register() {
                         name="amphoe"
                         type="text"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.amphoe?.message ? "ring-red-500" : ""
+                          errors?.amphoe?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -1421,7 +1421,7 @@ export default function Register() {
                         type="text"
                         autoComplete="district"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.district?.message ? "ring-red-500" : ""
+                          errors?.district?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -1470,7 +1470,7 @@ export default function Register() {
                         type="text"
                         autoComplete="province"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.province?.message ? "ring-red-500" : ""
+                          errors?.province?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
                     )}
@@ -1520,7 +1520,7 @@ export default function Register() {
                       type="number"
                       autoComplete="zip-code"
                       className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                        errors?.zipcode?.message ? "ring-red-500" : ""
+                        errors?.zipcode?.message ? "ring-red-500 ring-2" : ""
                       }`}
                     />
                   )}
@@ -1575,7 +1575,7 @@ export default function Register() {
                       type="number"
                       autoComplete="tel"
                       className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                        errors?.phonenumber?.message ? "ring-red-500" : ""
+                        errors?.phonenumber?.message ? "ring-red-500 ring-2" : ""
                       }`}
                     />
                   )}
