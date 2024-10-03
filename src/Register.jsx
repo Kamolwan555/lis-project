@@ -428,7 +428,6 @@ export default function Register() {
               <Button
                 type="submit"
                 onClick={next}
-                disabled={Object.keys(errors).length > 0}
                 className="block w-medium rounded-md bg-[#2563eb] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#3b82f6] 
                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-[#2563eb]"
               >
@@ -454,6 +453,7 @@ export default function Register() {
             action="#"
             method="POST"
             className="mx-auto mt-16 max-w-xl sm:mt-6"
+            onSubmit={handleSubmit(onSubmit)}
           >
             {/* Thai National ID Card */}
             <div className="mb-6">
@@ -763,17 +763,17 @@ export default function Register() {
                     required: "Date of birth is required",
                     validate: {
                       min: (value) => {
-                        const year = new Date(value).getFullYear(); 
+                        const year = new Date(value).getFullYear(); // แปลงค่าที่ได้มาเป็นปี
                         return (
                           year <= currentYear - 5 ||
-                          "Date of birth year must be at least 5 years ago"
+                          "Birth year must be at least 5 years ago"
                         );
                       },
                       max: (value) => {
-                        const year = new Date(value).getFullYear(); 
+                        const year = new Date(value).getFullYear(); // แปลงค่าที่ได้มาเป็นปี
                         return (
                           year <= currentYear ||
-                          "Date of birth year cannot be in the future"
+                          "Birth year cannot be in the future"
                         );
                       },
                     },
@@ -1196,7 +1196,6 @@ export default function Register() {
               </button>
               <button
                 onClick={next}
-                disabled={Object.keys(errors).length > 0}
                 type="submit"
                 className="w-1/2 ml-2 rounded-md bg-[#2563eb] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#3b82f6] 
                         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-[#2563eb]"
@@ -1223,6 +1222,7 @@ export default function Register() {
             action="#"
             method="POST"
             className="mx-auto mt-16 max-w-xl sm:mt-6"
+            onSubmit={handleSubmit(onSubmit)}
           >
             {/* Address in Thailand */}
             <div className="mb-6">
@@ -1617,7 +1617,6 @@ export default function Register() {
               </button>
               <button
                 onClick={finalSubmit}
-                disabled={Object.keys(errors).length > 0}
                 type="submit"
                 className="w-1/2 ml-2 rounded-md bg-[#2563eb] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#3b82f6] 
                         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-[#2563eb]"
