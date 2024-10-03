@@ -66,7 +66,7 @@ return (
                     type="text"
                     id="username"
                     className={`block w-full rounded-lg border border-gray-300 py-1.5 px-4 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                    errors?.username?.message ? "ring-red-500" : ""
+                    errors?.username?.message ? "ring-red-500 ring-2" : ""
                     }`}
                     placeholder="username"
                     autoComplete="email"
@@ -126,7 +126,7 @@ return (
                 type="password"
                 autoComplete="current-password"
                 className={`block w-full rounded-lg border border-gray-300 py-1.5 px-4 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                    errors?.password?.message ? "ring-red-500" : ""
+                    errors?.password?.message ? "ring-red-500 ring-2" : ""
                 }`}
                 placeholder="password"
                 />

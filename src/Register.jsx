@@ -182,7 +182,7 @@ export default function Register() {
                   htmlFor="email"
                   className="flex items-center mb-2 text-gray-600 text-sm font-medium"
                 >
-                  Email address
+                  Email
                   <svg
                     width="7"
                     height="7"
@@ -201,7 +201,7 @@ export default function Register() {
                     name="email"
                     control={control}
                     rules={{
-                      required: "Email address is Required",
+                      required: "Email is Required",
                       pattern: {
                         value:
                           /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
