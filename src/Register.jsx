@@ -42,10 +42,10 @@ export default function Register() {
     moo: "",
     soi: "",
     street: "",
-    subdistrict: "",
+    amphoe: "",
     district: "",
     province: "",
-    postalcode: "",
+    zipcode: "",
     username: "",
     email: "",
     password: "",
@@ -96,10 +96,10 @@ export default function Register() {
       state.moo &&
       state.soi &&
       state.street &&
-      state.subdistrict &&
+      state.amphoe &&
       state.district &&
       state.province &&
-      state.postalcode &&
+      state.zipcode &&
       state.phonenumber
     ) {
       return true;
@@ -1337,13 +1337,13 @@ export default function Register() {
             </div>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3 mt-6">
-              {/* Sub district */}
+              {/* Amphoe */}
               <div>
                 <label
-                  htmlFor="subdistrict"
+                  htmlFor="amphoe"
                   className="flex items-center mb-2 text-gray-600 text-sm font-medium"
                 >
-                  Sub district
+                  Amphoe
                   <svg
                     width="7"
                     height="7"
@@ -1359,27 +1359,27 @@ export default function Register() {
                 </label>
                 <div className="mt-2.5">
                   <Controller
-                    name="subdistrict"
+                    name="amphoe"
                     control={control}
-                    rules={{ required: "Sub district is Required" }}
+                    rules={{ required: "Amphoe is Required" }}
                     render={({ field }) => (
                       <Input
-                        error={Boolean(errors?.subdistrict?.message)}
+                        error={Boolean(errors?.amphoe?.message)}
                         {...field}
-                        value={state.subdistrict}
+                        value={state.amphoe}
                         onChange={inputHandle}
-                        id="subdistrict"
-                        name="subdistrict"
+                        id="amphoe"
+                        name="amphoe"
                         type="text"
                         className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                          errors?.subdistrict?.message ? "ring-red-500" : ""
+                          errors?.amphoe?.message ? "ring-red-500" : ""
                         }`}
                       />
                     )}
                   />
-                  {errors?.subdistrict?.message && (
+                  {errors?.amphoe?.message && (
                     <span className="error-text">
-                      {errors?.subdistrict?.message}
+                      {errors?.amphoe?.message}
                     </span>
                   )}
                 </div>
@@ -1484,13 +1484,13 @@ export default function Register() {
               </div>
             </div>
 
-            {/* Postal code */}
+            {/* Zip code */}
             <div className="mb-6 mt-6">
               <label
-                htmlFor="postalcode"
+                htmlFor="zipcode"
                 className="flex items-center mb-2 text-gray-600 text-sm font-medium"
               >
-                Postal code
+                Zip code
                 <svg
                   width="7"
                   height="7"
@@ -1506,28 +1506,28 @@ export default function Register() {
               </label>
               <div className="mt-2.5">
                 <Controller
-                  name="postalcode"
+                  name="zipcode"
                   control={control}
-                  rules={{ required: "Postalcode is Required" }}
+                  rules={{ required: "Zip code is Required" }}
                   render={({ field }) => (
                     <Input
                       {...field}
-                      error={Boolean(errors?.postalcode?.message)}
-                      value={state.postalcode}
+                      error={Boolean(errors?.zipcode?.message)}
+                      value={state.zipcode}
                       onChange={inputHandle}
-                      id="postalcode"
-                      name="postalcode"
+                      id="zipcode"
+                      name="zipcode"
                       type="number"
-                      autoComplete="postal-code"
+                      autoComplete="zip-code"
                       className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
-                        errors?.postalcode?.message ? "ring-red-500" : ""
+                        errors?.zipcode?.message ? "ring-red-500" : ""
                       }`}
                     />
                   )}
                 />
-                {errors?.postalcode?.message && (
+                {errors?.zipcode?.message && (
                   <span className="error-text">
-                    {errors?.postalcode?.message}
+                    {errors?.zipcode?.message}
                   </span>
                 )}
               </div>
