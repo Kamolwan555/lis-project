@@ -1593,7 +1593,7 @@ export default function Register() {
                 id="link-checkbox"
                 type="checkbox"
                 value=""
-                className="w-5 h-5 cursor-pointer border border-blue-300 rounded-md mr-2 hover:border-blue-500 hover:bg-blue-100 checked:bg-blue-500 checked:border-blue-500"
+                className="w-5 h-5 cursor-pointer border border-blue-600 rounded-md mr-2 hover:border-blue-500 hover:bg-blue-600 checked:bg-blue-500 checked:border-blue-600"
               />
               <label
                 htmlFor="link-checkbox"
