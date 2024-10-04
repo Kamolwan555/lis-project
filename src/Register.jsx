@@ -118,7 +118,7 @@ export default function Register() {
 
       {/*Header*/}
       <div className="mx-auto max-w-2xl text-center">
-        <img alt="logo" src={logo} className="mx-auto h-10 w-auto" />
+        <img alt="logo" src={logo} className="mx-auto h-20 w-auto" />
         <h2 className="text-xl font-semibold tracking-tight text-gray-900 sm:text-xl mt-8">
           Get Started create your profile now!
         </h2>
