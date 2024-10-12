@@ -21,7 +21,6 @@ export default function Register() {
   } = useForm({
     mode: "onTouched",
   });
-  const onSubmit = (data) => console.log(data);
 
   const formArray = [1, 2, 3];
   const [formNo, setFormNo] = useState(formArray[0]);
