@@ -1,0 +1,1130 @@
+{
+    "Hematology": [
+        {
+            "name": "CBC",
+            "sample_type": "EDTA",
+            "price": 100,
+            "id": 1
+        },
+        {
+            "name": "Hemoglobin",
+            "sample_type": "EDTA",
+            "price": 50,
+            "id": 2
+        },
+        {
+            "name": "Hematocrit",
+            "sample_type": "EDTA",
+            "price": 50,
+            "id": 3
+        },
+        {
+            "name": "WBC",
+            "sample_type": "EDTA",
+            "price": 60,
+            "id": 4
+        },
+        {
+            "name": "Platelet count",
+            "sample_type": "EDTA",
+            "price": 70,
+            "id": 5
+        },
+        {
+            "name": "ESR",
+            "sample_type": "EDTA",
+            "price": 80,
+            "id": 6
+        },
+        {
+            "name": "Reticulocyte count",
+            "sample_type": "EDTA",
+            "price": 90,
+            "id": 7
+        },
+        {
+            "name": "PT/INR",
+            "sample_type": "Na Citrate",
+            "price": 100,
+            "id": 8
+        },
+        {
+            "name": "APTT",
+            "sample_type": "Na Citrate",
+            "price": 85,
+            "id": 9
+        },
+        {
+            "name": "TT",
+            "sample_type": "Na Citrate",
+            "price": 80,
+            "id": 10
+        }
+    ],
+    "Blood bank": [
+        {
+            "name": "ABO grouping",
+            "sample_type": "EDTA",
+            "price": 60,
+            "id": 11
+        },
+        {
+            "name": "Rh typing",
+            "sample_type": "EDTA",
+            "price": 50,
+            "id": 12
+        },
+        {
+            "name": "Crossmatch",
+            "sample_type": "EDTA",
+            "price": 150,
+            "id": 13
+        },
+        {
+            "name": "Antibody screen",
+            "sample_type": "EDTA",
+            "price": 200,
+            "id": 14
+        },
+        {
+            "name": "Direct Coombs",
+            "sample_type": "EDTA",
+            "price": 120,
+            "id": 15
+        },
+        {
+            "name": "Indirect Coombs",
+            "sample_type": "EDTA",
+            "price": 130,
+            "id": 16
+        },
+        {
+            "name": "HIV antibody",
+            "sample_type": "EDTA",
+            "price": 300,
+            "id": 17
+        },
+        {
+            "name": "HBsAg",
+            "sample_type": "EDTA",
+            "price": 160,
+            "id": 18
+        },
+        {
+            "name": "Anti-HCV",
+            "sample_type": "EDTA",
+            "price": 180,
+            "id": 19
+        },
+        {
+            "name": "Fibrinogen",
+            "sample_type": "Clot blood",
+            "price": 200,
+            "id": 20
+        }
+    ],
+    "Microscopy": [
+        {
+            "name": "Urinalysis",
+            "sample_type": "Urine",
+            "price": 50,
+            "id": 21
+        },
+        {
+            "name": "Urine microscopy",
+            "sample_type": "Urine",
+            "price": 50,
+            "id": 22
+        },
+        {
+            "name": "Stool exam",
+            "sample_type": "Stool",
+            "price": 70,
+            "id": 23
+        },
+        {
+            "name": "Sputum exam",
+            "sample_type": "Sputum",
+            "price": 80,
+            "id": 24
+        },
+        {
+            "name": "Wet smear",
+            "sample_type": "Vaginal",
+            "price": 60,
+            "id": 25
+        },
+        {
+            "name": "Gram stain",
+            "sample_type": "Clot blood",
+            "price": 100,
+            "id": 26
+        },
+        {
+            "name": "AFB stain",
+            "sample_type": "Sputum",
+            "price": 90,
+            "id": 27
+        },
+        {
+            "name": "CSF analysis",
+            "sample_type": "CSF",
+            "price": 120,
+            "id": 28
+        },
+        {
+            "name": "Pregnancy test",
+            "sample_type": "Urine",
+            "price": 80,
+            "id": 29
+        },
+        {
+            "name": "Seminal analysis",
+            "sample_type": "Semen",
+            "price": 100,
+            "id": 30
+        }
+    ],
+    "Serology": [
+        {
+            "name": "VDRL",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 31
+        },
+        {
+            "name": "RPR",
+            "sample_type": "Clot blood",
+            "price": 55,
+            "id": 32
+        },
+        {
+            "name": "Anti-HIV",
+            "sample_type": "Clot blood",
+            "price": 160,
+            "id": 33
+        },
+        {
+            "name": "Anti-HBs",
+            "sample_type": "Clot blood",
+            "price": 250,
+            "id": 34
+        },
+        {
+            "name": "Anti-HAV IgG",
+            "sample_type": "Clot blood",
+            "price": 140,
+            "id": 35
+        },
+        {
+            "name": "Anti-HCV",
+            "sample_type": "Clot blood",
+            "price": 180,
+            "id": 36
+        },
+        {
+            "name": "HIV Ag/Ab",
+            "sample_type": "Clot blood",
+            "price": 200,
+            "id": 37
+        },
+        {
+            "name": "HBsAg",
+            "sample_type": "Clot blood",
+            "price": 160,
+            "id": 38
+        },
+        {
+            "name": "Anti-HBc IgM",
+            "sample_type": "Clot blood",
+            "price": 200,
+            "id": 39
+        },
+        {
+            "name": "Anti-HAV IgM",
+            "sample_type": "Clot blood",
+            "price": 150,
+            "id": 40
+        },
+        {
+            "name": "Rubella IgG",
+            "sample_type": "Clot blood",
+            "price": 180,
+            "id": 41
+        },
+        {
+            "name": "Rubella IgM",
+            "sample_type": "Clot blood",
+            "price": 200,
+            "id": 42
+        },
+        {
+            "name": "Dengue IgG",
+            "sample_type": "Clot blood",
+            "price": 150,
+            "id": 43
+        },
+        {
+            "name": "Dengue IgM",
+            "sample_type": "Clot blood",
+            "price": 150,
+            "id": 44
+        },
+        {
+            "name": "Toxoplasma IgG",
+            "sample_type": "Clot blood",
+            "price": 160,
+            "id": 45
+        }
+    ],
+    "Biochemistry": [
+        {
+            "name": "Blood sugar",
+            "sample_type": "NaF",
+            "price": 60,
+            "id": 46
+        },
+        {
+            "name": "BUN",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 47
+        },
+        {
+            "name": "Creatinine",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 48
+        },
+        {
+            "name": "Electrolyte",
+            "sample_type": "Clot blood",
+            "price": 100,
+            "id": 49
+        },
+        {
+            "name": "Calcium",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 50
+        },
+        {
+            "name": "Phosphorus",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 51
+        },
+        {
+            "name": "Magnesium",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 52
+        },
+        {
+            "name": "Uric acid",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 53
+        },
+        {
+            "name": "LDH",
+            "sample_type": "Clot blood",
+            "price": 50,
+            "id": 54
+        },
+        {
+            "name": "CPK",
+            "sample_type": "Clot blood",
+            "price": 60,
+            "id": 55
+        }
+    ],
+    "LFT": [
+        {
+            "name": "Total Protein",
+            "sample_type": "Clot blood",
+            "price": 70,
+            "id": 56
+        },
+        {
+            "name": "Albumin",
+            "sample_type": "Clot blood",
+            "price": 80,
+            "id": 57
+        },
+        {
+            "name": "Globulin",
+            "sample_type": "Clot blood",
+            "price": 80,
+            "id": 58
+        },
+        {
+            "name": "AST/SGOT",
+            "sample_type": "Clot blood",
+            "price": 80,
+            "id": 59
+        },
+        {
+            "name": "ALT/SGPT",
+            "sample_type": "Clot blood",
+            "price": 80,
+            "id": 60
+        },
+        {
+            "name": "Alkaline Phosphatase",
+            "sample_type": "Clot blood",
+            "price": 80,
+            "id": 61
+        },
+        {
+            "name": "GGT",
+            "sample_type": "Clot blood",
+            "price": 130,
+            "id": 62
+        },
+        {
+            "name": "Bilirubin Total",
+            "sample_type": "Clot blood",
+            "price": 90,
+            "id": 63
+        },
+        {
+            "name": "Bilirubin Direct",
+            "sample_type": "Clot blood",
+            "price": 90,
+            "id": 64
+        },
+        {
+            "name": "Lactate",
+            "sample_type": "NaF",
+            "price": 350,
+            "id": 65
+        }
+    ],
+    "Lipid Profile": [
+        {
+            "name": "Cholesterol",
+            "sample_type": "Clot blood",
+            "price": 100,
+            "id": 66
+        },
+        {
+            "name": "HDL-Cholesterol",
+            "sample_type": "Clot blood",
+            "price": 140,
+            "id": 67
+        },
+        {
+            "name": "LDL-Cholesterol",
+            "sample_type": "Clot blood",
+            "price": 150,
+            "id": 68
+        },
+        {
+            "name": "Triglycerides",
+            "sample_type": "Clot blood",
+            "price": 120,
+            "id": 69
+        }
+    ],
+    "Urine Chemistry": [
+        {
+            "name": "Creatinine 24 hrs",
+            "sample_type": "Urine",
+            "price": 80,
+            "id": 70
+        },
+        {
+            "name": "Urine Na",
+            "sample_type": "Urine",
+            "price": 130,
+            "id": 71
+        },
+        {
+            "name": "Urine K",
+            "sample_type": "Urine",
+            "price": 130,
+            "id": 72
+        },
+        {
+            "name": "Microalbumin",
+            "sample_type": "Urine",
+            "price": 70,
+            "id": 73
+        },
+        {
+            "name": "Protein",
+            "sample_type": "Urine",
+            "price": 60,
+            "id": 74
+        },
+        {
+            "name": "Bilirubin",
+            "sample_type": "Urine",
+            "price": 50,
+            "id": 75
+        }
+    ],
+    "CULTURE": [
+        {
+            "name": "Blood culture",
+            "sample_type": "Blood",
+            "price": 300,
+            "id": 76
+        },
+        {
+            "name": "Urine culture",
+            "sample_type": "Urine",
+            "price": 250,
+            "id": 77
+        },
+        {
+            "name": "Stool culture",
+            "sample_type": "Stool",
+            "price": 200,
+            "id": 78
+        },
+        {
+            "name": "Sputum culture",
+            "sample_type": "Sputum",
+            "price": 240,
+            "id": 79
+        },
+        {
+            "name": "CSF culture",
+            "sample_type": "CSF",
+            "price": 400,
+            "id": 80
+        },
+        {
+            "name": "Fluid culture",
+            "sample_type": "Fluid",
+            "price": 300,
+            "id": 81
+        }
+    ],
+    "Out Lab chem": [
+        {
+            "id": 81,
+            "name": "LDH",
+            "sample_type": "Serum",
+            "price": 180
+        },
+        {
+            "id": 82,
+            "name": "CPK",
+            "sample_type": "Serum",
+            "price": 200
+        },
+        {
+            "id": 83,
+            "name": "Amylase",
+            "sample_type": "Serum",
+            "price": 180
+        },
+        {
+            "id": 84,
+            "name": "Lipase",
+            "sample_type": "Serum",
+            "price": 250
+        },
+        {
+            "id": 85,
+            "name": "C-Reactive protein",
+            "sample_type": "Serum",
+            "price": 150
+        },
+        {
+            "id": 86,
+            "name": "Anti-dsDNA",
+            "sample_type": "Serum",
+            "price": 300
+        },
+        {
+            "id": 87,
+            "name": "Complement C3",
+            "sample_type": "Serum",
+            "price": 400
+        },
+        {
+            "id": 88,
+            "name": "Complement C4",
+            "sample_type": "Serum",
+            "price": 400
+        },
+        {
+            "id": 89,
+            "name": "Immunoglobulin A",
+            "sample_type": "Serum",
+            "price": 350
+        },
+        {
+            "id": 90,
+            "name": "Immunoglobulin G",
+            "sample_type": "Serum",
+            "price": 350
+        },
+        {
+            "id": 91,
+            "name": "Immunoglobulin M",
+            "sample_type": "Serum",
+            "price": 350
+        },
+        {
+            "id": 92,
+            "name": "Rheumatoid factor",
+            "sample_type": "Serum",
+            "price": 200
+        },
+        {
+            "id": 93,
+            "name": "Anti-HAV IgM",
+            "sample_type": "Serum",
+            "price": 160
+        },
+        {
+            "id": 94,
+            "name": "ANA",
+            "sample_type": "Serum",
+            "price": 300
+        },
+        {
+            "id": 95,
+            "name": "TB Gold",
+            "sample_type": "EDTA",
+            "price": 600
+        }
+    ],
+    "Out Lab Immuno": [
+        {
+            "id": 96,
+            "name": "Anti-HBc",
+            "sample_type": "Serum",
+            "price": 210
+        },
+        {
+            "id": 102,
+            "name": "HBV Viral load",
+            "sample_type": "Plasma EDTA",
+            "price": 2400
+        },
+        {
+            "id": 103,
+            "name": "Anti-HIV",
+            "sample_type": "Serum",
+            "price": 160
+        },
+        {
+            "id": 104,
+            "name": "Toxoplasma IgG",
+            "sample_type": "Serum",
+            "price": 160
+        },
+        {
+            "id": 105,
+            "name": "CMV IgG",
+            "sample_type": "Serum",
+            "price": 150
+        },
+        {
+            "id": 106,
+            "name": "Rubella IgM",
+            "sample_type": "Serum",
+            "price": 180
+        },
+        {
+            "id": 107,
+            "name": "Measles IgG",
+            "sample_type": "Serum",
+            "price": 150
+        },
+        {
+            "id": 108,
+            "name": "Varicella IgG",
+            "sample_type": "Serum",
+            "price": 150
+        },
+        {
+            "id": 109,
+            "name": "EBV IgM",
+            "sample_type": "Serum",
+            "price": 180
+        },
+        {
+            "id": 110,
+            "name": "HSV PCR",
+            "sample_type": "EDTA",
+            "price": 1400
+        },
+        {
+            "id": 1011,
+            "name": "Anti-HAV IgG",
+            "sample_type": "Serum",
+            "price": 160
+        },
+        {
+            "id": 1012,
+            "name": "HCV PCR",
+            "sample_type": "EDTA",
+            "price": 1400
+        },
+        {
+            "id": 1013,
+            "name": "Anti-HBs",
+            "sample_type": "Serum",
+            "price": 180
+        },
+        {
+            "id": 1014,
+            "name": "CMV IgM",
+            "sample_type": "Serum",
+            "price": 160
+        },
+        {
+            "id": 1015,
+            "name": "TB PCR",
+            "sample_type": "Serum",
+            "price": 2000
+        }
+    ],
+    "Out Lab hemato": [
+        {
+            "id": 101,
+            "name": "D-dimer",
+            "sample_type": "Citrate Plasma",
+            "price": 400
+        },
+        {
+            "id": 112,
+            "name": "Antithrombin III",
+            "sample_type": "Citrate Plasma",
+            "price": 350
+        },
+        {
+            "id": 113,
+            "name": "Lupus anticoagulant",
+            "sample_type": "Citrate Plasma",
+            "price": 350
+        },
+        {
+            "id": 114,
+            "name": "Protein C",
+            "sample_type": "Citrate Plasma",
+            "price": 400
+        },
+        {
+            "id": 115,
+            "name": "Protein S",
+            "sample_type": "Citrate Plasma",
+            "price": 400
+        },
+        {
+            "id": 116,
+            "name": "Factor V Leiden",
+            "sample_type": "Citrate Plasma",
+            "price": 500
+        },
+        {
+            "id": 117,
+            "name": "Fibrinogen",
+            "sample_type": "Citrate Plasma",
+            "price": 300
+        },
+        {
+            "id": 118,
+            "name": "Heparin-induced thrombocytopenia",
+            "sample_type": "Citrate Plasma",
+            "price": 600
+        },
+        {
+            "id": 119,
+            "name": "Homocysteine",
+            "sample_type": "Citrate Plasma",
+            "price": 450
+        },
+        {
+            "id": 1110,
+            "name": "Prothrombin gene mutation",
+            "sample_type": "Citrate Plasma",
+            "price": 550
+        },
+        {
+            "id": 1111,
+            "name": "Thrombophilia panel",
+            "sample_type": "Citrate Plasma",
+            "price": 1000
+        }
+    ],
+    "Hormone assay": [
+        {
+            "id": 2121,
+            "name": "TSH",
+            "sample_type": "Serum",
+            "price": 200
+        },
+        {
+            "id": 2122,
+            "name": "Free T4",
+            "sample_type": "Serum",
+            "price": 220
+        },
+        {
+            "id": 2123,
+            "name": "Free T3",
+            "sample_type": "Serum",
+            "price": 220
+        },
+        {
+            "id": 2124,
+            "name": "Prolactin",
+            "sample_type": "Serum",
+            "price": 250
+        },
+        {
+            "id": 2125,
+            "name": "FSH",
+            "sample_type": "Serum",
+            "price": 280
+        },
+        {
+            "id": 2126,
+            "name": "LH",
+            "sample_type": "Serum",
+            "price": 280
+        },
+        {
+            "id": 2127,
+            "name": "Estradiol",
+            "sample_type": "Serum",
+            "price": 260
+        },
+        {
+            "id": 2128,
+            "name": "Testosterone",
+            "sample_type": "Serum",
+            "price": 300
+        },
+        {
+            "id": 2129,
+            "name": "Cortisol",
+            "sample_type": "Serum",
+            "price": 280
+        },
+        {
+            "id": 2130,
+            "name": "Insulin",
+            "sample_type": "Serum",
+            "price": 300
+        }
+    ],
+    "Tumor marker": [
+        {
+            "id": 2121,
+            "name": "CEA",
+            "sample_type": "Clot blood",
+            "price": 180
+        },
+        {
+            "id": 2122,
+            "name": "AFP",
+            "sample_type": "Clot blood",
+            "price": 200
+        },
+        {
+            "id": 2123,
+            "name": "CA 19-9",
+            "sample_type": "Clot blood",
+            "price": 250
+        },
+        {
+            "id": 2124,
+            "name": "CA 125",
+            "sample_type": "Clot blood",
+            "price": 260
+        },
+        {
+            "id": 2125,
+            "name": "PSA",
+            "sample_type": "Clot blood",
+            "price": 240
+        },
+        {
+            "id": 2126,
+            "name": "Free PSA",
+            "sample_type": "Clot blood",
+            "price": 300
+        },
+        {
+            "id": 2127,
+            "name": "CA 15-3",
+            "sample_type": "Clot blood",
+            "price": 280
+        },
+        {
+            "id": 2128,
+            "name": "NSE",
+            "sample_type": "Clot blood",
+            "price": 320
+        },
+        {
+            "id": 2129,
+            "name": "Thyroglobulin",
+            "sample_type": "Clot blood",
+            "price": 350
+        },
+        {
+            "id": 2130,
+            "name": "Beta-hCG",
+            "sample_type": "Clot blood",
+            "price": 400
+        }
+    ],
+    "Out Lab Others": [
+        {
+            "id": 2121,
+            "name": "Cryoglobulin",
+            "sample_type": "Serum",
+            "price": 500
+        },
+        {
+            "id": 2122,
+            "name": "Molecular PCR TB",
+            "sample_type": "CSF",
+            "price": 1200
+        },
+        {
+            "id": 2123,
+            "name": "Leptospira PCR",
+            "sample_type": "Serum",
+            "price": 1400
+        },
+        {
+            "id": 2124,
+            "name": "EBV PCR",
+            "sample_type": "Serum",
+            "price": 1600
+        },
+        {
+            "id": 2125,
+            "name": "Chikungunya IgG",
+            "sample_type": "Serum",
+            "price": 1400
+        },
+        {
+            "id": 2126,
+            "name": "Zika IgG",
+            "sample_type": "Serum",
+            "price": 1400
+        },
+        {
+            "id": 2127,
+            "name": "Viral Load HIV",
+            "sample_type": "Plasma EDTA",
+            "price": 3000
+        },
+        {
+            "id": 2128,
+            "name": "HBV genotyping",
+            "sample_type": "Serum",
+            "price": 2500
+        },
+        {
+            "id": 2129,
+            "name": "HPV DNA",
+            "sample_type": "Clot blood",
+            "price": 2400
+        },
+        {
+            "id": 2130,
+            "name": "BRAF mutation",
+            "sample_type": "Clot blood",
+            "price": 3000
+        }
+    ],
+    "Hormone assay": [
+        {
+            "id": 2121,
+            "name": "TSH",
+            "sample_type": "Serum",
+            "price": 200
+        },
+        {
+            "id": 2122,
+            "name": "Free T4",
+            "sample_type": "Serum",
+            "price": 220
+        },
+        {
+            "id": 2123,
+            "name": "Free T3",
+            "sample_type": "Serum",
+            "price": 220
+        },
+        {
+            "id": 2124,
+            "name": "Prolactin",
+            "sample_type": "Serum",
+            "price": 250
+        },
+        {
+            "id": 2125,
+            "name": "FSH",
+            "sample_type": "Serum",
+            "price": 280
+        },
+        {
+            "id": 2126,
+            "name": "LH",
+            "sample_type": "Serum",
+            "price": 280
+        },
+        {
+            "id": 2127,
+            "name": "Estradiol",
+            "sample_type": "Serum",
+            "price": 260
+        },
+        {
+            "id": 2128,
+            "name": "Testosterone",
+            "sample_type": "Serum",
+            "price": 300
+        },
+        {
+            "id": 2129,
+            "name": "Cortisol",
+            "sample_type": "Serum",
+            "price": 280
+        },
+        {
+            "id": 2130,
+            "name": "Insulin",
+            "sample_type": "Serum",
+            "price": 300
+        }
+    ],
+    "Tumor marker": [
+        {
+            "id": 2121,
+            "name": "CEA",
+            "sample_type": "Clot blood",
+            "price": 180
+        },
+        {
+            "id": 2122,
+            "name": "AFP",
+            "sample_type": "Clot blood",
+            "price": 200
+        },
+        {
+            "id": 2123,
+            "name": "CA 19-9",
+            "sample_type": "Clot blood",
+            "price": 250
+        },
+        {
+            "id": 2124,
+            "name": "CA 125",
+            "sample_type": "Clot blood",
+            "price": 260
+        },
+        {
+            "id": 2125,
+            "name": "PSA",
+            "sample_type": "Clot blood",
+            "price": 240
+        },
+        {
+            "id": 2126,
+            "name": "Free PSA",
+            "sample_type": "Clot blood",
+            "price": 300
+        },
+        {
+            "id": 2127,
+            "name": "CA 15-3",
+            "sample_type": "Clot blood",
+            "price": 280
+        },
+        {
+            "id": 2128,
+            "name": "NSE",
+            "sample_type": "Clot blood",
+            "price": 320
+        },
+        {
+            "id": 2129,
+            "name": "Thyroglobulin",
+            "sample_type": "Clot blood",
+            "price": 350
+        },
+        {
+            "id": 2130,
+            "name": "Beta-hCG",
+            "sample_type": "Clot blood",
+            "price": 400
+        }
+    ],
+    "Out Lab Others": [
+        {
+            "id": 2121,
+            "name": "Cryoglobulin",
+            "sample_type": "Serum",
+            "price": 500
+        },
+        {
+            "id": 2122,
+            "name": "Molecular PCR TB",
+            "sample_type": "CSF",
+            "price": 1200
+        },
+        {
+            "id": 2123,
+            "name": "Leptospira PCR",
+            "sample_type": "Serum",
+            "price": 1400
+        },
+        {
+            "id": 2124,
+            "name": "EBV PCR",
+            "sample_type": "Serum",
+            "price": 1600
+        },
+        {
+            "id": 2125,
+            "name": "Chikungunya IgG",
+            "sample_type": "Serum",
+            "price": 1400
+        },
+        {
+            "id": 2126,
+            "name": "Zika IgG",
+            "sample_type": "Serum",
+            "price": 1400
+        },
+        {
+            "id": 2127,
+            "name": "Viral Load HIV",
+            "sample_type": "Plasma EDTA",
+            "price": 3000
+        },
+        {
+            "id": 2128,
+            "name": "HBV genotyping",
+            "sample_type": "Serum",
+            "price": 2500
+        },
+        {
+            "id": 2129,
+            "name": "HPV DNA",
+            "sample_type": "Clot blood",
+            "price": 2400
+        },
+        {
+            "id": 2130,
+            "name": "BRAF mutation",
+            "sample_type": "Clot blood",
+            "price": 3000
+        }
+    ]
+}

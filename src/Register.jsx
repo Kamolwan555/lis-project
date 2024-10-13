@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import logo from "./picture/logo.png";
+import logo from './components/picture/logo.png'; 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Input, Button } from "@material-tailwind/react";
@@ -12,6 +12,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 export default function Register() {
   const currentYear = new Date().getFullYear();
   const navigate = useNavigate();
+  
   const {
     control,
     handleSubmit,
@@ -104,6 +105,15 @@ export default function Register() {
       return true;
     } else {
       return false;
+    }
+  };
+
+  const onSubmit = (data) => { console.log(data); 
+
+    if (finalSubmit()) {
+      navigate('/success');
+    } else {
+      console.error('Please fill all required fields in the final step.');
     }
   };
 
@@ -217,7 +227,7 @@ export default function Register() {
                         name="email"
                         type="email"
                         placeholder="someone@gmail.com"
-                        className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
+                        className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900  shadow-sm ring-1 ring-inset  placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 appearance-none ${
                           errors?.email?.message ? "ring-red-500 ring-2" : ""
                         }`}
                       />
