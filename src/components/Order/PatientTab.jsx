@@ -86,7 +86,7 @@ setFormData((prevState) => ({ ...prevState, [key]: value }));
 };
 
 const handleSubmit = () => {
-onSubmit(formData); // ส่งข้อมูลกลับไปยังคอมโพเนนต์หลัก
+onSubmit(formData); 
 };
 
 return (

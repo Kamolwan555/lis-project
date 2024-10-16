@@ -1,0 +1,452 @@
+[
+    {
+        "id": 1,
+        "name": "Urea Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-09-25",
+        "quantity": 26,
+        "price": 274
+    },
+    {
+        "id": 2,
+        "name": "Creatinine Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-10-21",
+        "quantity": 93,
+        "price": 157
+    },
+    {
+        "id": 3,
+        "name": "Cholesterol Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-29",
+        "quantity": 40,
+        "price": 269
+    },
+    {
+        "id": 4,
+        "name": "Triglyceride Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2026-01-06",
+        "quantity": 15,
+        "price": 292
+    },
+    {
+        "id": 5,
+        "name": "HDL Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-07-18",
+        "quantity": 57,
+        "price": 160
+    },
+    {
+        "id": 6,
+        "name": "LDL Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2026-02-19",
+        "quantity": 31,
+        "price": 195
+    },
+    {
+        "id": 7,
+        "name": "AST Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2026-01-29",
+        "quantity": 72,
+        "price": 101
+    },
+    {
+        "id": 8,
+        "name": "ALT Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-19",
+        "quantity": 91,
+        "price": 211
+    },
+    {
+        "id": 9,
+        "name": "Total Bilirubin Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-05-08",
+        "quantity": 57,
+        "price": 151
+    },
+    {
+        "id": 10,
+        "name": "Direct Bilirubin Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2026-02-16",
+        "quantity": 15,
+        "price": 351
+    },
+    {
+        "id": 11,
+        "name": "Total Protein Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-12-15",
+        "quantity": 32,
+        "price": 70
+    },
+    {
+        "id": 12,
+        "name": "Albumin Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2026-02-08",
+        "quantity": 62,
+        "price": 432
+    },
+    {
+        "id": 13,
+        "name": "Alkaline Phosphatase Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-12-07",
+        "quantity": 72,
+        "price": 149
+    },
+    {
+        "id": 14,
+        "name": "Calcium Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-17",
+        "quantity": 83,
+        "price": 53
+    },
+    {
+        "id": 15,
+        "name": "Phosphate Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-05-08",
+        "quantity": 20,
+        "price": 208
+    },
+    {
+        "id": 16,
+        "name": "Magnesium Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-06-23",
+        "quantity": 10,
+        "price": 112
+    },
+    {
+        "id": 17,
+        "name": "Amylase Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-11-22",
+        "quantity": 45,
+        "price": 203
+    },
+    {
+        "id": 18,
+        "name": "Lipase Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-05",
+        "quantity": 88,
+        "price": 210
+    },
+    {
+        "id": 19,
+        "name": "CRP Reagent",
+        "type": "Chemical",
+        "dateup": "2024-10-13",
+        "expdate": "2025-12-17",
+        "quantity": 16,
+        "price": 213
+    },
+    {
+        "id": 20,
+        "name": "Rheumatoid Factor (RF) Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2025-05-22",
+        "quantity": 87,
+        "price": 137
+    },
+    {
+        "id": 21,
+        "name": "Antinuclear Antibodies (ANA) Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2026-01-09",
+        "quantity": 49,
+        "price": 496
+    },
+    {
+        "id": 22,
+        "name": "HIV Test Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2026-02-17",
+        "quantity": 58,
+        "price": 466
+    },
+    {
+        "id": 23,
+        "name": "Hepatitis B Surface Antigen Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2025-09-13",
+        "quantity": 32,
+        "price": 173
+    },
+    {
+        "id": 24,
+        "name": "Hepatitis C Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2026-02-18",
+        "quantity": 73,
+        "price": 144
+    },
+    {
+        "id": 25,
+        "name": "Thyroid Function Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2025-12-04",
+        "quantity": 28,
+        "price": 188
+    },
+    {
+        "id": 26,
+        "name": "Insulin Test Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2025-10-16",
+        "quantity": 90,
+        "price": 456
+    },
+    {
+        "id": 27,
+        "name": "Cortisol Reagent",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2025-11-06",
+        "quantity": 22,
+        "price": 186
+    },
+    {
+        "id": 28,
+        "name": "Alcohol Swab",
+        "type": "Immunology",
+        "dateup": "2024-10-13",
+        "expdate": "2025-11-24",
+        "quantity": 19,
+        "price": 479
+    },
+    {
+        "id": 29,
+        "name": "Sterile Cotton",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-13",
+        "quantity": 58,
+        "price": 256
+    },
+    {
+        "id": 30,
+        "name": "Vacutainer Tube",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-18",
+        "quantity": 24,
+        "price": 255
+    },
+    {
+        "id": 31,
+        "name": "Syringe",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-15",
+        "quantity": 44,
+        "price": 203
+    },
+    {
+        "id": 32,
+        "name": "Gloves",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-12-11",
+        "quantity": 70,
+        "price": 258
+    },
+    {
+        "id": 33,
+        "name": "Test Tube",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-05-15",
+        "quantity": 46,
+        "price": 424
+    },
+    {
+        "id": 34,
+        "name": "Pipette",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-11-21",
+        "quantity": 31,
+        "price": 322
+    },
+    {
+        "id": 35,
+        "name": "Lancet",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2026-02-20",
+        "quantity": 98,
+        "price": 97
+    },
+    {
+        "id": 36,
+        "name": "Centrifuge Tube",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2026-01-14",
+        "quantity": 64,
+        "price": 140
+    },
+    {
+        "id": 37,
+        "name": "Slide",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-06-04",
+        "quantity": 60,
+        "price": 126
+    },
+    {
+        "id": 38,
+        "name": "Cover Slip",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-05-07",
+        "quantity": 70,
+        "price": 173
+    },
+    {
+        "id": 39,
+        "name": "Glucose Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-10-02",
+        "quantity": 17,
+        "price": 304
+    },
+    {
+        "id": 40,
+        "name": "Urea Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-12-07",
+        "quantity": 54,
+        "price": 256
+    },
+    {
+        "id": 41,
+        "name": "Creatinine Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-06-19",
+        "quantity": 17,
+        "price": 261
+    },
+    {
+        "id": 42,
+        "name": "Cholesterol Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-12-25",
+        "quantity": 30,
+        "price": 77
+    },
+    {
+        "id": 43,
+        "name": "Triglyceride Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-11-26",
+        "quantity": 35,
+        "price": 235
+    },
+    {
+        "id": 44,
+        "name": "HDL Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-05-22",
+        "quantity": 52,
+        "price": 301
+    },
+    {
+        "id": 45,
+        "name": "LDL Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-07-11",
+        "quantity": 58,
+        "price": 398
+    },
+    {
+        "id": 46,
+        "name": "AST Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2026-02-25",
+        "quantity": 15,
+        "price": 147
+    },
+    {
+        "id": 47,
+        "name": "ALT Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-05-20",
+        "quantity": 76,
+        "price": 207
+    },
+    {
+        "id": 48,
+        "name": "Total Bilirubin Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-08-24",
+        "quantity": 52,
+        "price": 223
+    },
+    {
+        "id": 49,
+        "name": "Direct Bilirubin Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2026-01-14",
+        "quantity": 43,
+        "price": 56
+    },
+    {
+        "id": 50,
+        "name": "Total Protein Reagent",
+        "type": "Medical Supply",
+        "dateup": "2024-10-13",
+        "expdate": "2025-11-21",
+        "quantity": 38,
+        "price": 389
+    }
+]

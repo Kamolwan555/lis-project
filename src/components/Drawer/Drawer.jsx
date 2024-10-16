@@ -21,48 +21,48 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 const menuItems = [
 {
-name: "Dashboard",
-icon: <Squares2X2Icon aria-hidden="true" className="h-5 w-5" />,
-href: "/dashboard",
+    name: "Dashboard",
+    icon: <Squares2X2Icon aria-hidden="true" className="h-5 w-5" />,
+    href: "/dashboard",  // Adjusted href
 },
 {
-name: "Customer",
-icon: <UserGroupIcon aria-hidden="true" className="h-5 w-5" />,
-href: "#",
+    name: "Customer",
+    icon: <UserGroupIcon aria-hidden="true" className="h-5 w-5" />,
+    href: "/customers",  // Adjusted href
 },
 {
-name: "Booking",
-icon: <CalendarIcon aria-hidden="true" className="h-5 w-5" />,
-href: "#",
+    name: "Booking",
+    icon: <CalendarIcon aria-hidden="true" className="h-5 w-5" />,
+    href: "/appointments",  // Adjusted href
 },
 {
-name: "Packages",
-icon: <ShoppingBagIcon aria-hidden="true" className="h-5 w-5" />,
-href: "#",
+    name: "Packages",
+    icon: <ShoppingBagIcon aria-hidden="true" className="h-5 w-5" />,
+    href: "/packages",  // Adjusted href
 },
 ];
 
 const ecommerceItems = [
-{ name: "Create Orders", href: "#" },
-{ name: "Standing Orders", href: "#" },
-{ name: "Invoice", href: "#" },
+{ name: "Create Orders", href: "/orders" },
+{ name: "Orders Lab", href: "/standingorders" },
+{ name: "Confirm", href: "/confirm" },
 ];
 
 const analyticsItems = [
 {
-name: "Results",
+name: "Report ",
 icon: <ClipboardIcon aria-hidden="true" className="h-5 w-5" />,
-href: "#",
+href: "/report",
 },
 {
 name: "Billing",
 icon: <WalletIcon aria-hidden="true" className="h-5 w-5" />,
-href: "#",
+href: "/billing",
 },
 {
 name: "Stock",
 icon: <CubeIcon aria-hidden="true" className="h-5 w-5" />,
-href: "#",
+href: "/items",
 },
 ];
 

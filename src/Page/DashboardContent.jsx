@@ -1,6 +1,6 @@
 // DashboardContent.jsx
 import React from 'react';
-import Header from "../components/Header";
+import Header from "../components/Header/Header"
 import DataTable from "../components/OrdersTable";
 
 const DashboardContent = () => {
@@ -23,7 +23,7 @@ const DashboardContent = () => {
                 <header>
                     <div className="mx-auto max-w-8xl px-4 py-6 sm:px-6 lg:px-8">
                         <h1 className="text-base font-semibold tracking-tight text-gray-800">
-                            Booking Orders
+                            Orders
                         </h1>
                     </div>
                 </header>

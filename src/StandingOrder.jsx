@@ -17,7 +17,7 @@ import Search from "./components/Header/Search"
 import Notification from "./components/Header/Notification"
 import { useNavigate } from "react-router-dom";
 import MenuButton from "./components/Drawer/MenuButton"
-import DashboardContent from "./Page/DashboardContent";
+import StandingOrderContent from "./Page/StandingOrderContent";
 
 const userNavigation = [
     { name: "Profile", href: "#", icon: UserIcon },
@@ -115,7 +115,7 @@ export default function Dashboard() {
             </Disclosure>
 
             {/* Main Dashboard */}
-            <DashboardContent />
+            <StandingOrderContent />
         </div>
     );
 }

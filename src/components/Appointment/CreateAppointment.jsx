@@ -1,104 +1,242 @@
-import React, { useState } from "react";
-import { Button, message, Steps, theme } from "antd";
-const steps = [
-{
-title: "Doctor",
-content: "First-content",
-},
-{
-title: "Date & Time",
-content: "Second-content",
-},
-{
-title: "Patient info",
-content: "Last-content",
-},
-];
-const App = () => {
-const { token } = theme.useToken();
-const [current, setCurrent] = useState(0);
-const next = () => {
-setCurrent(current + 1);
+import React, { useEffect, useState } from "react";
+import {
+Card,
+Form,
+Select,
+DatePicker,
+TimePicker,
+Divider,
+Button,
+Input,
+message,
+Radio,
+List,
+} from "antd";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+
+// Database
+import LabTestsData from "../../assets/LabTests.json";
+
+const CreateAppointment = () => {
+const navigate = useNavigate(); // Initialize navigate
+const [categories, setCategories] = useState([]);
+const [newOption, setNewOption] = useState(""); // State to manage new options
+const [dateSelection, setDateSelection] = useState("individual"); // State to manage date selection
+const [selectedTests, setSelectedTests] = useState([]); // State to manage selected tests
+
+const addNewOption = () => {
+if (newOption) {
+    const newTest = {
+    id: new Date().getTime(),
+    name: newOption,
+    price: "Free",
+    };
+    setCategories((prevCategories) => {
+    const customCategoryExists = prevCategories.some(
+        (category) => category[0] === "Custom Category"
+    );
+    if (customCategoryExists) {
+        return prevCategories.map((category) =>
+        category[0] === "Custom Category"
+            ? [category[0], [...category[1], newTest]]
+            : category
+        );
+    } else {
+        return [...prevCategories, ["Custom Category", [newTest]]];
+    }
+    });
+    setNewOption(""); // Clear the input field after adding
+} else {
+    message.error("Please enter a valid option!");
+}
 };
-const prev = () => {
-setCurrent(current - 1);
+
+const handleAddTest = (value) => {
+const selectedTest = categories
+    .flatMap(([, tests]) => tests)
+    .find((test) => test.name === value);
+if (
+    selectedTest &&
+    !selectedTests.some((test) => test.id === selectedTest.id)
+) {
+    setSelectedTests((prevSelected) => [...prevSelected, selectedTest]);
+}
 };
-const items = steps.map((item) => ({
-key: item.title,
-title: item.title,
-}));
-const contentStyle = {
-lineHeight: "260px",
-textAlign: "center",
-color: token.colorTextTertiary,
-backgroundColor: token.colorFillAlter,
-borderRadius: token.borderRadiusLG,
-border: `1px dashed ${token.colorBorder}`,
-marginTop: 16,
-};
-return (
-<>
-    <Steps current={current} items={items} />
-    <div style={contentStyle}>{steps[current].content}</div>
-    <div
-    style={{
-        marginTop: 24,
-    }}
-    >
-    {current < steps.length - 1 && (
-        <Button
-        type="primary"
-        onClick={() => next()}
-        style={{
-            padding: "5px 30px",
-            backgroundColor: "#2563eb",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            marginBottom: "30px",
-            marginTop: "30px",
-            marginRight: "5px",
-        }}
-        >
-        Next
-        </Button>
-    )}
-    {current === steps.length - 1 && (
-        <Button
-        style={{
-            padding: "5px 30px",
-            backgroundColor: "#2563eb",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            marginBottom: "30px",
-            marginTop: "30px",
-            marginRight: "5px",
-        }}
-        type="primary"
-        onClick={() => message.success("Processing complete!")}
-        >
-        Done
-        </Button>
-    )}
-    {current > 0 && (
-        <Button
-        style={{
-            margin: "0 8px",
-            cursor: "pointer",
-            marginBottom: "30px",
-            marginTop: "30px",
-            marginRight: "5px",
-        }}
-        onClick={() => prev()}
-        >
-        Previous
-        </Button>
-    )}
-    </div>
-</>
+
+const removeTest = (test) => {
+setSelectedTests((prevSelected) =>
+    prevSelected.filter((item) => item.id !== test.id)
 );
 };
-export default App;
+
+useEffect(() => {
+const fetchData = () => {
+    try {
+    const categoriesArray = Object.entries(LabTestsData);
+    setCategories(categoriesArray);
+    } catch (error) {
+    console.error("Error fetching data:", error);
+    }
+};
+
+fetchData();
+}, []);
+
+const handleDateSelectionChange = (e) => {
+setDateSelection(e.target.value);
+};
+
+const onFinish = (values) => {
+console.log("Success:", values);
+message.success("Appointment successfully!");
+navigate("/dashboard"); // Navigate to Dashboard after saving
+};
+
+const onFinishFailed = (errorInfo) => {
+console.log("Failed:", errorInfo);
+message.error("Please fill out all required fields.");
+};
+
+return (
+<Card style={{ width: "100%" }}>
+    <Form
+    layout="horizontal"
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    >
+    <Form.Item>
+        <Radio.Group
+        value={dateSelection}
+        onChange={handleDateSelectionChange}
+        size="large"
+        >
+        <Radio.Button value="individual">
+            Earliest date available
+        </Radio.Button>
+        <Radio.Button value="team">Choose preferred date</Radio.Button>
+        </Radio.Group>
+    </Form.Item>
+
+    {dateSelection === "team" && (
+        <Form.Item
+        label="Preferred Date"
+        name="preferredDate"
+        rules={[{ required: true, message: "Please select a date!" }]}
+        >
+        <DatePicker style={{ width: "100%" }} />
+        </Form.Item>
+    )}
+
+    <Divider />
+
+    <Form.Item
+        label="Preferred Time"
+        name="time"
+        rules={[{ required: true, message: "Please select a time!" }]}
+    >
+        <TimePicker style={{ width: "100%" }} />
+    </Form.Item>
+
+    <Divider />
+
+    <Form.Item
+        label="Preferred Test"
+        name="test"
+        rules={[{ required: true, message: "Please select a test!" }]}
+    >
+        <Select
+        placeholder="Select a test"
+        style={{ width: "100%" }}
+        dropdownRender={(menu) => (
+            <>
+            {menu}
+            <Divider style={{ margin: "8px 0" }} />
+            <div
+                style={{ display: "flex", flexWrap: "nowrap", padding: 8 }}
+            >
+                <Input
+                style={{ flex: "auto" }}
+                value={newOption}
+                onChange={(e) => setNewOption(e.target.value)}
+                placeholder="Add new option"
+                />
+                <Button
+                type="primary"
+                onClick={addNewOption}
+                style={{ marginLeft: "8px" }}
+                >
+                Add
+                </Button>
+            </div>
+            </>
+        )}
+        onChange={handleAddTest}
+        >
+        {categories.map(([category, tests], index) => (
+            <Select.OptGroup key={`${category}-${index}`} label={category}>
+            {tests.map((test) => (
+                <Select.Option key={test.id} value={test.name}>
+                <div
+                    style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    }}
+                >
+                    <span>{test.name}</span>
+                    <span style={{ color: "#888" }}>Price: {test.price}</span>
+                </div>
+                </Select.Option>
+            ))}
+            </Select.OptGroup>
+        ))}
+        </Select>
+    </Form.Item>
+
+    <Divider />
+
+    <h3>Selected Preferred Tests</h3>
+    <List
+        style={{ marginTop: "20px" }}
+        bordered
+        dataSource={selectedTests}
+        renderItem={(test) => (
+        <List.Item
+            key={test.id}
+            actions={[
+            <Button
+                key={test.id}
+                type="link"
+                onClick={() => removeTest(test)}
+            >
+                Remove
+            </Button>,
+            ]}
+        >
+            {test.name}
+        </List.Item>
+        )}
+    />
+
+    <div
+        style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginTop: "30px",
+        }}
+    >
+        <Form.Item>
+        <Button
+            type="primary"
+            htmlType="submit"
+            style={{ backgroundColor: "#2563eb" }}
+        >
+            Save
+        </Button>
+        </Form.Item>
+    </div>
+    </Form>
+</Card>
+);
+};
+
+export default CreateAppointment;
