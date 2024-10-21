@@ -1,0 +1,46 @@
+services:
+  # Node.js server service
+  node:
+    build: 
+      context: ./  # Path ไปยังโฟลเดอร์ที่มี Dockerfile
+      dockerfile: Dockerfile
+    container_name: node_server
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/mydb
+    volumes:
+      - ./:/app  # เชื่อมโยงโฟลเดอร์ server บน host กับ /app ใน container
+      - ./package.json:/app/package.json  # เชื่อมโยง package.json โดยตรง
+    working_dir: /app
+    command: npm start
+
+  # PostgreSQL service
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # pgAdmin service
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '8080:80'
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
