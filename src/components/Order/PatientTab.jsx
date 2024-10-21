@@ -220,7 +220,7 @@ return (
             />
             </Form.Item>
             <button onClick={handleSubmit}>Submit</button>{" "}
-            {/* ปุ่มสำหรับส่งข้อมูล */}
+            
         </Form>
         </Col>
     </Row>
