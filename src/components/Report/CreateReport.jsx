@@ -78,19 +78,19 @@ const columns = [
     key: "report_id",
 },
 {
+    title: "ACP ID",
+    dataIndex: "labaccept_id",
+    key: "labaccept_id",
+},
+{
+    title: "Patient Number",
+    dataIndex: "employee_id",
+    key: "employee_id",
+},
+{
     title: "Patient Name",
     dataIndex: "patient_name",
     key: "patient_name",
-},
-{
-    title: "Hospital Number",
-    dataIndex: "hospital_number",
-    key: "hospital_number",
-},
-{
-    title: "Test Date",
-    dataIndex: "test_date",
-    key: "test_date",
 },
 {
     title: "Result",
