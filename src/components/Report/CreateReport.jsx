@@ -83,7 +83,7 @@ const columns = [
     key: "labaccept_id",
 },
 {
-    title: "Patient Number",
+    title: "Patient ID",
     dataIndex: "employee_id",
     key: "employee_id",
 },
