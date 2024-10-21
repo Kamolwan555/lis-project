@@ -1,46 +1,50 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Modal, Input } from "antd";
+import { Table, Drawer, Button, notification, Modal, Input } from "antd";
 import recordData from "../../assets/RecordLab.json";
 
 const AcceptTable = () => {
 const [data, setData] = useState([]);
-const [isModalVisible, setIsModalVisible] = useState(false);
+const [visible, setVisible] = useState(false);
 const [selectedRecord, setSelectedRecord] = useState(null);
-const [doctorName, setDoctorName] = useState("");
-const [doctorId, setDoctorId] = useState("");
+const [isModalVisible, setIsModalVisible] = useState(false); // สถานะสำหรับ Modal
+const [doctorName, setDoctorName] = useState(""); // ค่าชื่อแพทย์
+const [doctorId, setDoctorId] = useState(""); // ค่ารหัสแพทย์
 
 useEffect(() => {
 setData(recordData);
 }, []);
 
-const handleAccept = (record) => {
+const showDrawer = (record) => {
 setSelectedRecord(record);
-setIsModalVisible(true);
+setVisible(true);
+};
+
+const onClose = () => {
+setVisible(false);
+setSelectedRecord(null);
+};
+
+const handleAccept = (record) => {
+console.log("Accepted record:", record);
+};
+
+const handleConfirm = () => {
+setIsModalVisible(true); // เปิด Modal เมื่อกด Confirm
 };
 
 const handleOk = () => {
-// Update the status or any other actions needed here
-const updatedData = data.map((item) => {
-    if (item.record_id === selectedRecord.record_id) {
-    return {
-        ...item,
-        status: "Accepted",
-        doctor_name: doctorName,
-        doctor_id: doctorId,
-    };
-    }
-    return item;
+// แสดงข้อความยืนยันที่นี่
+notification.success({
+    message: "Confirmation Successful",
+    description: `You have confirmed the record ID: ${selectedRecord.record_id} with Doctor: ${doctorName} (ID: ${doctorId})`,
 });
-setData(updatedData);
-setIsModalVisible(false);
-setDoctorName("");
-setDoctorId("");
+setIsModalVisible(false); // ปิด Modal
+onClose(); // ปิด Drawer
+// ทำการจัดการอื่นๆ ที่คุณต้องการที่นี่ เช่น บันทึกข้อมูลลงฐานข้อมูล
 };
 
 const handleCancel = () => {
-setIsModalVisible(false);
-setDoctorName("");
-setDoctorId("");
+setIsModalVisible(false); // ปิด Modal เมื่อกด Cancel
 };
 
 const columns = [
@@ -102,7 +106,62 @@ const columns = [
 
 return (
 <div style={{ padding: "20px" }}>
-    <Table columns={columns} dataSource={data} rowKey="record_id" />
+    <Table
+    columns={columns}
+    dataSource={data}
+    rowKey="record_id"
+    onRow={(record) => ({
+        onClick: () => showDrawer(record),
+    })}
+    />
+    <Drawer
+    title="Record Details"
+    placement="right"
+    onClose={onClose}
+    visible={visible}
+    width={500}
+    >
+    {selectedRecord && (
+        <div>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Record ID:</strong> {selectedRecord.record_id}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Patient ID:</strong> {selectedRecord.patient_id}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Test ID:</strong> {selectedRecord.test_id}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Test Name:</strong> {selectedRecord.test_name}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Result:</strong> {selectedRecord.result}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Unit:</strong> {selectedRecord.unit}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Reference Range:</strong> {selectedRecord.reference_range}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Date Tested:</strong> {selectedRecord.date_tested}
+        </p>
+        <p style={{ margin: "10px 0" }}>
+            <strong>Status:</strong> {selectedRecord.status}
+        </p>
+        </div>
+    )}
+    <div style={{ textAlign: "right", marginTop: "20px" }}>
+        <Button onClick={onClose} style={{ marginRight: 8 }}>
+        Cancel
+        </Button>
+        <Button type="primary" onClick={handleConfirm}>
+        Confirm
+        </Button>
+    </div>
+    </Drawer>
+
     <Modal
     title="Accept Record"
     visible={isModalVisible}
