@@ -45,7 +45,7 @@ const menuItems = [
 const ecommerceItems = [
 { name: "Create Orders", href: "/orders" },
 { name: "Orders Lab", href: "/standingorders" },
-{ name: "Confirm", href: "/confirm" },
+{ name: "Report & Accept", href: "/confirm" },
 ];
 
 const analyticsItems = [
