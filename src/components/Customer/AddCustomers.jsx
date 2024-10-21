@@ -62,26 +62,13 @@ const AddButton = ({ onAddCustomer }) => {
                 bodyStyle={{ paddingBottom: 80 }}
             >
                 <Form layout="vertical" form={form} id="add-customer-form" onFinish={onSubmit}>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="HN"
-                                label="HN"
-                                rules={[{ required: true, message: "Please enter HN" }]}
+                <Form.Item
+                                name="Card ID"
+                                label="Card ID"
+                                rules={[{ required: true, message: "Please enter Card ID" }]}
                             >
-                                <Input placeholder="Please enter HN" />
+                                <Input placeholder="Please enter Card ID" />
                             </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Customer ID"
-                                label="Customer ID"
-                                rules={[{ required: true, message: "Please enter Customer ID" }]}
-                            >
-                                <Input placeholder="Please enter Customer ID" />
-                            </Form.Item>
-                        </Col>
-                    </Row>
                     <Row gutter={16}>
                         <Col span={12}>
                             <Form.Item
