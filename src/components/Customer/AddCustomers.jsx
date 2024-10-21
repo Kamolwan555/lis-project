@@ -125,82 +125,9 @@ const AddButton = ({ onAddCustomer }) => {
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="RequestedTest"
-                                label="Requested Test"
-                                rules={[{ required: true, message: "Please enter requested test" }]}
-                            >
-                                <Input placeholder="Please enter requested test" />
+                            <Form.Item name="Address" label="Address"  rules={[{ required: true, message: "Please enter your address" }]}>
+                                <TextArea rows={4}  />
                             </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Sample Type"
-                                label="Sample Type"
-                                rules={[{ required: true, message: "Please enter sample type" }]}
-                            >
-                                <Input placeholder="Please enter sample type" />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Date of Sample Collection"
-                                label="Date of Sample Collection"
-                                rules={[{ required: true, message: "Please select date of sample collection" }]}
-                            >
-                                <DatePicker style={{ width: "100%" }} placeholder="Select date" />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Test Results"
-                                label="Test Results"
-                                rules={[{ required: true, message: "Please enter test results" }]}
-                            >
-                                <Input placeholder="Please enter test results" />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Date of Test Completion"
-                                label="Date of Test Completion"
-                                rules={[{ required: true, message: "Please select date of test completion" }]}
-                            >
-                                <DatePicker style={{ width: "100%" }} placeholder="Select date" />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Doctor's Name"
-                                label="Doctor's Name"
-                                rules={[{ required: true, message: "Please enter doctor's name" }]}
-                            >
-                                <Input placeholder="Please enter doctor's name" />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Lab Technician"
-                                label="Lab Technician"
-                                rules={[{ required: true, message: "Please enter lab technician name" }]}
-                            >
-                                <Input placeholder="Please enter lab technician name" />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item name="Remarks" label="Remarks">
-                                <TextArea rows={4} placeholder="Please enter remarks" />
-                            </Form.Item>
-                        </Col>
-                    </Row>
                 </Form>
             </Drawer>
         </>

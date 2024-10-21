@@ -12,17 +12,17 @@ message,
 Radio,
 List,
 } from "antd";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 
 // Database
 import LabTestsData from "../../assets/LabTests.json";
 
 const CreateAppointment = () => {
-const navigate = useNavigate(); // Initialize navigate
+const navigate = useNavigate(); 
 const [categories, setCategories] = useState([]);
-const [newOption, setNewOption] = useState(""); // State to manage new options
-const [dateSelection, setDateSelection] = useState("individual"); // State to manage date selection
-const [selectedTests, setSelectedTests] = useState([]); // State to manage selected tests
+const [newOption, setNewOption] = useState(""); 
+const [dateSelection, setDateSelection] = useState("individual"); 
+const [selectedTests, setSelectedTests] = useState([]); 
 
 const addNewOption = () => {
 if (newOption) {
@@ -45,7 +45,7 @@ if (newOption) {
         return [...prevCategories, ["Custom Category", [newTest]]];
     }
     });
-    setNewOption(""); // Clear the input field after adding
+    setNewOption(""); 
 } else {
     message.error("Please enter a valid option!");
 }
@@ -89,7 +89,7 @@ setDateSelection(e.target.value);
 const onFinish = (values) => {
 console.log("Success:", values);
 message.success("Appointment successfully!");
-navigate("/dashboard"); // Navigate to Dashboard after saving
+navigate("/dashboard"); 
 };
 
 const onFinishFailed = (errorInfo) => {

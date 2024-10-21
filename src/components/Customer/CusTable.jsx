@@ -36,17 +36,17 @@ pagination: {
 const [isEditing, setIsEditing] = useState(false);
 const [editRecord, setEditRecord] = useState(null);
 const [form] = Form.useForm();
-const [activeTab, setActiveTab] = useState("1"); // Track the active tab
-const [drawerVisible, setDrawerVisible] = useState(false); // State for drawer visibility
-const [selectedRecord, setSelectedRecord] = useState(null); // State for the selected record
+const [activeTab, setActiveTab] = useState("1"); 
+const [drawerVisible, setDrawerVisible] = useState(false); 
+const [selectedRecord, setSelectedRecord] = useState(null); 
 
-// ฟังก์ชันเพื่อโหลดข้อมูลลูกค้า (เช่น จาก API หรือ Mock Data)
+
 const fetchData = () => {
 setLoading(true);
-const useMockData = true; // Set to false to use API
+const useMockData = true; 
 
 if (useMockData) {
-    setData(mockData); // Use mock data
+    setData(mockData); 
     setLoading(false);
     setTableParams({
     ...tableParams,
@@ -69,7 +69,7 @@ if (useMockData) {
         ...tableParams,
         pagination: {
             ...tableParams.pagination,
-            total: 200, // Update with the real total if using API
+            total: 200, 
         },
         });
     });
@@ -107,16 +107,16 @@ if (pagination.pageSize !== tableParams.pagination?.pageSize) {
 }
 };
 
-// ฟังก์ชันสำหรับจัดการการเพิ่มลูกค้าใหม่
+
 const handleAddCustomer = (customer) => {
-setData((prevData) => [...prevData, customer]); // เพิ่มลูกค้าใหม่ใน state
+setData((prevData) => [...prevData, customer]); 
 };
 
-// Function to handle Edit button click
+
 const handleEdit = (record) => {
 setEditRecord(record);
-form.setFieldsValue(record); // Set form fields to record values
-setIsEditing(true); // Open modal
+form.setFieldsValue(record); 
+setIsEditing(true); 
 };
 
 const handleHide = (record) => {
@@ -134,19 +134,19 @@ form.validateFields().then((values) => {
 });
 };
 
-// Function to open Drawer with selected record
+
 const showDrawer = (record) => {
 setSelectedRecord(record);
 setDrawerVisible(true);
 };
 
-// Function to close Drawer
+
 const onClose = () => {
 setDrawerVisible(false);
 setSelectedRecord(null);
 };
 
-// Define operation column
+
 const operationColumn = {
 title: "Operation",
 key: "operation",
@@ -192,7 +192,7 @@ const customerColumns = [
     key: "Contact Information",
     width: "20%",
 },
-operationColumn, // Add operation column
+operationColumn, 
 ];
 
 const testColumns = [
@@ -223,66 +223,19 @@ const testColumns = [
     onFilter: (value, record) => record["Sample Type"] === value,
 },
 {
-    title: "Date of Sample Collection",
-    dataIndex: "Date of Sample Collection",
-    key: "Date of Sample Collection",
+    title: "Price",
+    dataIndex: "Test Costs",
+    key: "Test Costs",
     width: "30%",
-    render: (date) => new Date(date).toLocaleDateString(),
+    render: (cost) => `฿${cost.toFixed(2)}`, 
 },
 operationColumn, // Add operation column
 ];
 
-const resultColumns = [
-{
-    title: "Test Results",
-    dataIndex: "Test Results",
-    key: "Test Results",
-    width: "50%",
-    filters: [
-    { text: "Negative", value: "negative" },
-    { text: "Inconclusive", value: "inconclusive" },
-    { text: "Positive", value: "positive" },
-    ],
-    onFilter: (value, record) =>
-    record["Test Results"].toLowerCase() === value,
-},
-{
-    title: "Date of Test Completion",
-    dataIndex: "Date of Test Completion",
-    key: "Date of Test Completion",
-    width: "40%",
-    render: (date) => new Date(date).toLocaleDateString(),
-},
-operationColumn, // Add operation column
-];
 
-const additionalColumns = [
-{
-    title: "Doctor's Name",
-    dataIndex: "Doctor's Name",
-    key: "Doctor's Name",
-    width: "20%",
-},
-{
-    title: "Lab Technician",
-    dataIndex: "Lab Technician",
-    key: "Lab Technician",
-    width: "20%",
-},
-{
-    title: "Remarks",
-    dataIndex: "Remarks",
-    key: "Remarks",
-    width: "50%",
-    render: (text) => <span style={{ color: "red" }}>{text}</span>,
-},
-operationColumn, // Add operation column
-];
-
-// Function to handle tab change
 const handleTabChange = (key) => {
 setActiveTab(key);
-setEditRecord(null); // Reset edit record when tab changes
+setEditRecord(null); 
 };
 
 return (
@@ -308,7 +261,7 @@ return (
             <Button onClick={handleReset}>Reset</Button>
         </Space>
         <AddButton onAddCustomer={handleAddCustomer} />{" "}
-        {/* ส่งฟังก์ชันไปยัง AddButton */}
+        
         </div>
     }
     bordered={true}
@@ -332,28 +285,6 @@ return (
         <Table
             columns={testColumns}
             rowKey={(record) => record["Requested Test"]}
-            dataSource={filteredData}
-            pagination={tableParams.pagination}
-            loading={loading}
-            onChange={handleTableChange}
-            scroll={{ x: 1000 }}
-        />
-        </TabPane>
-        <TabPane tab="Result Info" key="3">
-        <Table
-            columns={resultColumns}
-            rowKey={(record) => record["Test Results"]}
-            dataSource={filteredData}
-            pagination={tableParams.pagination}
-            loading={loading}
-            onChange={handleTableChange}
-            scroll={{ x: 1000 }}
-        />
-        </TabPane>
-        <TabPane tab="Additional Info" key="4">
-        <Table
-            columns={additionalColumns}
-            rowKey={(record) => record["Doctor's Name"]}
             dataSource={filteredData}
             pagination={tableParams.pagination}
             loading={loading}
@@ -436,50 +367,11 @@ return (
                 <Input />
             </Form.Item>
             <Form.Item
-                name="Date of Sample Collection"
-                label="Date of Sample Collection"
+                name="Test Costs"
+                label="Price"
                 rules={[{ required: true }]}
             >
-                <Input type="date" />
-            </Form.Item>
-            </>
-        )}
-        {activeTab === "3" && (
-            <>
-            <Form.Item
-                name="Test Results"
-                label="Test Results"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item
-                name="Date of Test Completion"
-                label="Date of Test Completion"
-                rules={[{ required: true }]}
-            >
-                <Input type="date" />
-            </Form.Item>
-            </>
-        )}
-        {activeTab === "4" && (
-            <>
-            <Form.Item
-                name="Doctor's Name"
-                label="Doctor's Name"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item
-                name="Lab Technician"
-                label="Lab Technician"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item name="Remarks" label="Remarks">
-                <Input />
+                <Input type="number" />
             </Form.Item>
             </>
         )}
