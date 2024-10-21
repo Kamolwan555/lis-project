@@ -36,6 +36,13 @@ switch (status) {
 return <Tag color={color}>{status.toUpperCase()}</Tag>;
 };
 
+const getEmergencyTag = (emergencyCase) => {
+if (emergencyCase === "urgent") {
+    return <Tag color="red">URGENT</Tag>;
+}
+return <Tag>{emergencyCase.toUpperCase()}</Tag>; 
+};
+
 const columns = [
 {
     title: "Order ID",
@@ -48,7 +55,12 @@ const columns = [
     key: "medical_license_number",
 },
 {
-    title: "HN",
+    title: "Physician Name",
+    dataIndex: "physician_name",
+    key: "physician_name",
+},
+{
+    title: "Card ID",
     dataIndex: "HN",
     key: "HN",
 },
@@ -56,6 +68,17 @@ const columns = [
     title: "Lab Test ID",
     dataIndex: "labtest_id",
     key: "labtest_id",
+},
+{
+    title: "Order Date",
+    dataIndex: "order_date",
+    key: "order_date",
+},
+{
+    title: "Emergency Case",
+    dataIndex: "emergency_case",
+    key: "emergency_case",
+    render: (emergencyCase) => getEmergencyTag(emergencyCase),
 },
 {
     title: "Status",
@@ -76,7 +99,7 @@ const handleSearch = (value) => {
 const filtered = data.filter(
     (item) =>
     item.order_id.includes(value) ||
-    item.Medical_License_Number.includes(value) ||
+    item.medical_license_number.includes(value) ||
     item.HN.toString().includes(value) ||
     item.labtest_id.includes(value) ||
     item.status.includes(value)
@@ -85,7 +108,15 @@ setFilteredData(filtered);
 setSearchText(value);
 };
 
-// Configuration for row selection
+
+const sortedData = filteredData.sort((a, b) => {
+if (a.emergency_case === "urgent" && b.emergency_case !== "urgent")
+    return -1;
+if (a.emergency_case !== "urgent" && b.emergency_case === "urgent")
+    return 1;
+return 0; 
+});
+
 const rowSelection = {
 selectedRowKeys,
 onChange: (selectedRowKeys) => {
@@ -96,7 +127,7 @@ onChange: (selectedRowKeys) => {
 return (
 <div className="p-4">
     <Input
-    placeholder="Search by Order ID, Physician ID, HN, Status"
+    placeholder="Search "
     prefix={<SearchOutlined />}
     value={searchText}
     onChange={(e) => handleSearch(e.target.value)}
@@ -104,9 +135,9 @@ return (
     />
     <Table
     columns={columns}
-    dataSource={filteredData}
+    dataSource={sortedData} 
     rowKey="order_id"
-    rowSelection={rowSelection} // Add the rowSelection property
+    rowSelection={rowSelection}
     />
 </div>
 );

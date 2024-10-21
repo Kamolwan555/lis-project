@@ -13,10 +13,9 @@ Select,
 Divider,
 } from "antd";
 import mockData from "../../assets/mockData.json";
-import PropTypes from "prop-types"; 
+import PropTypes from "prop-types";
 
 const PatientTab = ({ onSubmit }) => {
-// เพิ่ม props onSubmit
 const { TextArea } = Input;
 const { Title } = Typography;
 const [doctorOptions, setDoctorOptions] = useState([]);
@@ -83,10 +82,8 @@ setHnOptions(
 
 const handleChange = (key, value) => {
 setFormData((prevState) => ({ ...prevState, [key]: value }));
-};
-
-const handleSubmit = () => {
-onSubmit(formData); 
+// Call the onSubmit function to send data on change
+onSubmit({ ...formData, [key]: value });
 };
 
 return (
@@ -219,8 +216,7 @@ return (
                 onChange={(e) => handleChange("specialNotes", e.target.value)}
             />
             </Form.Item>
-            <button onClick={handleSubmit}>Submit</button>{" "}
-            
+            {/* Removed submit button */}
         </Form>
         </Col>
     </Row>
@@ -254,7 +250,7 @@ return (
             <Row gutter={50}>
             <Col span={12}>
                 <Form.Item
-                label="HN"
+                label="Card ID"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -356,7 +352,7 @@ return (
 };
 
 PatientTab.propTypes = {
-    onSubmit: PropTypes.func.isRequired, 
+onSubmit: PropTypes.func.isRequired,
 };
 
 export default PatientTab;

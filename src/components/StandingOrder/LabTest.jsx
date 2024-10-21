@@ -13,8 +13,8 @@ setData(sampleData);
 }, []);
 
 const handleEditClick = (record) => {
-setEditingRowKey(record.order_id); 
-setEditedRow(record); 
+setEditingRowKey(record.order_id);
+setEditedRow(record);
 };
 
 const handleSaveClick = () => {
@@ -22,7 +22,7 @@ const updatedData = data.map((item) =>
     item.order_id === editingRowKey ? editedRow : item
 );
 setData(updatedData);
-setEditingRowKey(null); 
+setEditingRowKey(null);
 };
 
 const handleInputChange = (e, field) => {
@@ -73,7 +73,21 @@ const columns = [
     ),
 },
 {
-    title: "Price",
+    title: "Default",
+    dataIndex: "default",
+    key: "default",
+    render: (text, record) =>
+    editingRowKey === record.order_id ? (
+        <Input
+        value={editedRow.default}
+        onChange={(e) => handleInputChange(e, "default")}
+        />
+    ) : (
+        text
+    ),
+},
+{
+    title: "Price", 
     dataIndex: "price",
     key: "price",
     render: (text, record) =>
@@ -83,7 +97,7 @@ const columns = [
         onChange={(e) => handleInputChange(e, "price")}
         />
     ) : (
-        text
+        `฿${parseFloat(text).toFixed(2)}` 
     ),
 },
 {

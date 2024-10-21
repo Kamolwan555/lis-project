@@ -103,10 +103,6 @@ form.setFieldsValue(record);
 setIsEditing(true);
 };
 
-const handleHide = (record) => {
-setData(data.filter((item) => item !== record));
-};
-
 const handleEditSave = () => {
 form.validateFields().then((values) => {
     const updatedData = data.map((item) =>
@@ -127,7 +123,6 @@ width: "20%",
 render: (record) => (
     <Space>
     <Button onClick={() => handleEdit(record)}>Edit</Button>
-    <Button onClick={() => handleHide(record)}>Hide</Button>
     </Space>
 ),
 };

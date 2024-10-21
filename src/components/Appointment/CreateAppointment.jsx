@@ -15,6 +15,7 @@ const CreateAppointment = () => {
 const navigate = useNavigate();
 const [orderId, setOrderId] = useState("");
 const [appointmentId, setAppointmentId] = useState("");
+const [memberId, setMemberId] = useState("");
 
 useEffect(() => {
 const generateOrderId = () => {
@@ -27,8 +28,14 @@ const generateAppointmentId = () => {
     setAppointmentId(id);
 };
 
+const generateMemberId = () => {
+    const id = `MEM-${Math.floor(Math.random() * 100000)}`; 
+    setMemberId(id);
+};
+
 generateOrderId();
 generateAppointmentId();
+generateMemberId(); 
 }, []);
 
 const onFinish = (values) => {
@@ -37,7 +44,7 @@ if (!values.preferredDate || !values.time) {
     return;
 }
 
-console.log("Success:", { ...values, orderId, appointmentId });
+console.log("Success:", { ...values, orderId, appointmentId, memberId });
 message.success("Appointment successfully created!");
 navigate("/dashboard");
 };
@@ -70,6 +77,18 @@ return (
         style={{ marginBottom: "10px" }}
     >
         <Input value={appointmentId} readOnly />
+    </Form.Item>
+
+    <Form.Item
+        label="Member ID" 
+        labelCol={{ span: 24 }}
+        wrapperCol={{ span: 24 }}
+        style={{ marginBottom: "10px" }}
+    >
+        <Input
+        value={memberId} 
+        readOnly 
+        />
     </Form.Item>
 
     <Divider />
