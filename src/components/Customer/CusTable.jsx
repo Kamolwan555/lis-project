@@ -3,6 +3,7 @@ import { Button, Input, Space, Table, Card, Tabs, Modal, Form } from "antd";
 import qs from "qs";
 import mockData from "../../assets/mockData.json";
 import AddButton from "./AddCustomers";
+import axios from "axios";
 
 const { TabPane } = Tabs;
 
