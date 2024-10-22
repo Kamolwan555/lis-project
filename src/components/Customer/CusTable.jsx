@@ -167,16 +167,31 @@ setIsEditing(true);
 };
 
 const handleEditSave = () => {
-form.validateFields().then((values) => {
-    const updatedData = data.map((item) =>
-    item["Customer ID"] === editRecord["Customer ID"]
-        ? { ...item, ...values }
-        : item
-    );
-    setData(updatedData);
-    setIsEditing(false);
-    setEditRecord(null);
-});
+    form.validateFields().then((values) => {
+        // ดึง member ID จาก record ที่แก้ไข
+        const memberId = editRecord["Customer ID"]; // เปลี่ยนหากคุณมีคีย์อื่นสำหรับ member_id
+        console.log(memberId)
+        // ส่งค่าที่อัปเดตไปยัง API โดยใช้คำสั่ง PUT
+        axios.put(`http://localhost:3000/TechMedi/updateMember/${memberId}`, values)
+        .then((response) => {
+            // ตรวจสอบว่าการอัปเดตสำเร็จ
+            if (response.status === 200) {
+                const updatedData = data.map((item) =>
+                    item["Customer ID"] === memberId
+                        ? { ...item, ...values }
+                        : item
+                );
+                setData(updatedData);
+                setIsEditing(false);
+                setEditRecord(null);
+            } else {
+                console.error("การอัปเดตล้มเหลว:", response.data);
+            }
+        })
+        .catch((error) => {
+            console.error("เกิดข้อผิดพลาดในการอัปเดตข้อมูล:", error);
+        });
+    });
 };
 
 const operationColumn = {

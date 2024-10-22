@@ -209,6 +209,7 @@ export const deleteLabTest = async (req, res) => {
     }
 }
 
+//ต้นแบบ createMember
 export const createMember = async (req, res) => {
   const {
       card_id,
@@ -308,6 +309,7 @@ export const createMember = async (req, res) => {
   }
 }
 
+//createMember for font
 export const createMemberr = async (req, res) => {
     // Log request body
     console.log('Received request body:', req.body);
