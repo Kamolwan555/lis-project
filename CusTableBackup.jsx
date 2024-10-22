@@ -30,78 +30,38 @@ const [form] = Form.useForm();
 const [activeTab, setActiveTab] = useState("1");
 
 const fetchData = () => {
-    setLoading(true);
-    const useMockData = false; // ปิดการใช้ mock data
+setLoading(true);
+const useMockData = true;
 
-    if (useMockData) {
-        setData(mockData);
+if (useMockData) {
+    setData(mockData);
+    setLoading(false);
+    setTableParams({
+    ...tableParams,
+    pagination: {
+        ...tableParams.pagination,
+        total: mockData.length, // Use the total length of mock data
+    },
+    });
+} else {
+    fetch(
+    `https://randomuser.me/api?${qs.stringify(
+        getRandomuserParams(tableParams)
+    )}`
+    )
+    .then((res) => res.json())
+    .then(({ results }) => {
+        setData(results);
         setLoading(false);
         setTableParams({
-            ...tableParams,
-            pagination: {
-                ...tableParams.pagination,
-                total: mockData.length,
-            },
+        ...tableParams,
+        pagination: {
+            ...tableParams.pagination,
+            total: 200,
+        },
         });
-    } else {
-        axios.get('http://localhost:3000/TechMedi/getUser')
-        .then((response) => {
-            const result = response.data;
-    
-            // ตรวจสอบว่า result มีข้อมูลที่ต้องการ
-            if (result && result.card_id && result.card_id.length > 0) {
-                const apiData = result.card_id.map((id, index) => ({
-                    'Customer ID': id,
-                    'Name': result.name[index],
-                    'Date of Birth': result.birthday[index],
-                    'Gender': result.gender[index],
-                    'Contact Information': result.contact_infromation[index], // แก้คำผิดจาก contact_information
-                }));
-    
-                setData(apiData); // ตั้งค่าให้กับ state
-                setLoading(false);
-                setTableParams({
-                    ...tableParams,
-                    pagination: {
-                        ...tableParams.pagination,
-                        total: apiData.length, // ใช้จำนวนข้อมูลจาก API
-                    },
-                });
-            } else {
-                console.error("No valid data found in the response:", result);
-                setData([]); // ตั้งค่าให้เป็นอาร์เรย์ว่างถ้าไม่มีข้อมูล
-                setLoading(false);
-            }
-        })
-        .catch((error) => {
-            console.error("Error fetching data from API:", error);
-            setLoading(false);
-        });
-    }
-};
-
-const fetchTestData = () => {
-    axios.get('http://localhost:3000/TechMedi/getTest')
-        .then((response) => {
-            const result = response.data; // ใช้ result ที่นี่
-
-            // ตรวจสอบว่า result มีข้อมูลที่ต้องการ
-            if (result && result.LabTest_ID && result.LabTest_ID.length > 0) {
-                const apiTestData = result.LabTest_ID.map((id, index) => ({
-                    'Requested Test': result.TestName[index],
-                    'Sample Type': result.TestType[index] || 'ไม่ระบุ',
-                    'Test Costs': result.TestPrice[index] !== undefined ? result.TestPrice[index] : 0,
-                }));
-
-                setTestData(apiTestData); // ตั้งค่าให้กับ state
-            } else {
-                console.error("No valid test data found in the response:", result);
-                setTestData([]); // ตั้งค่าให้เป็นอาร์เรย์ว่างถ้าไม่มีข้อมูล
-            }
-        })
-        .catch((error) => {
-            console.error("Error fetching test data from API:", error);
-        });
+    });
+}
 };
 
 const handleSearch = (value) => {
@@ -120,7 +80,6 @@ Object.values(record).some((field) =>
 
 useEffect(() => {
 fetchData(); // Call fetchData
-fetchTestData();
 }, [tableParams.pagination?.current, tableParams.pagination?.pageSize]);
 
 const handleTableChange = (pagination, filters, sorter) => {
@@ -290,7 +249,7 @@ return (
         <Table
             columns={testColumns}
             rowKey={(record) => record["Requested Test"]}
-            dataSource={testData}
+            dataSource={filteredData}
             pagination={tableParams.pagination}
             loading={loading}
             onChange={handleTableChange}
