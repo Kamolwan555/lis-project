@@ -15,6 +15,7 @@ page: params.pagination?.current,
 
 const CustomersDefault = () => {
 const [data, setData] = useState([]);
+const [testData, setTestData] = useState([]);
 const [loading, setLoading] = useState(false);
 const [searchText, setSearchText] = useState("");
 const [tableParams, setTableParams] = useState({
