@@ -14,7 +14,7 @@ export const getUsers = async (req,res) =>{
         const name = result.rows.map(row => row.me_name);
         const birthday = result.rows.map(row => row.me_birthday);
         const gender = result.rows.map(row => row.me_gender);
-        const contact_infromation = result.rows.map(row => row.me_contact);
+        const contact_infromation = result.rows.map(row => row.me_phone);
 
         const MemberTable = {
             card_id,
