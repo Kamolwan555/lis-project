@@ -37,7 +37,7 @@ CREATE TABLE Member (
     Me_Gender VARCHAR(200) NOT NULL,
     Me_Status VARCHAR(200) ,
     Me_Blood CHAR(2),
-    Me_Address VARCHAR(200),
+    Me_Address VARCHAR(200) NOT NULL,
     Me_SubDistric VARCHAR(200),
     Me_Distric VARCHAR(200),
     Me_Province VARCHAR(200),
