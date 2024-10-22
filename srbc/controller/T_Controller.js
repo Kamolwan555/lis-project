@@ -45,7 +45,7 @@ export const getLabTest = async (req,res) =>{
 
 
         const LabTest = {
-            LabTest_ID
+            LabTest_ID,
             TestName,
             TestType,
             TestPrice
