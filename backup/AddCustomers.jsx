@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Drawer, Form, Input, DatePicker, Select, Row, Col } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
-import axios from "axios"; // import axios
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -19,50 +18,33 @@ const AddButton = ({ onAddCustomer }) => {
         setVisible(false);
         form.resetFields();
     };
-
-    const onSubmit = async (values) => {
-        const createMemberr = {
-            card_id: values['Card ID'],
-            me_firstname: values.Name.split(" ")[0],
-            me_lastname: values.Name.split(" ")[1],
-            me_birthday: values['Date of Birth'] ? values['Date of Birth'].format('YYYY-MM-DD') : null, // แปลง date ให้เป็น string
-            me_gender: values.Gender,
-            me_address: values.Address,
-            me_phone: values['Contact Information'],
-            me_prefix: values['Prefix'] || "mr.",  // ตั้งค่า default
-            me_religion: values['Religion'] || "Buddhist",  // เพิ่มฟิลด์ religion
-            me_ethnicity: values['Ethnicity'] || "Thai",
-            me_nationality: values['Nationality'] || "Thai",
-            me_status: values['Status'] || "single",
-            me_blood: values['Blood'] || "A",
-            me_subdistric: values['Subdistric'] || null,
-            me_distric: values['Distric'] || null,
-            me_province: values['Province'] || null,
-            me_postalcode: values['Postalcode'] || null,
-            me_email: values['Email'] || null,
-            me_drug: values['Drug'] || null,
-            me_disease: values['Disease'] || null,
-        };
-        console.log(createMemberr)
     
-        try {
-            const response = await axios.post("http://localhost:3000/TechMedi/createMemberr", createMemberr);
-            console.log('Response:', response);  // เพิ่ม log ตรงนี้
-            if (response.status === 201) {
-                onAddCustomer(response.data.data); 
-                onClose(); 
-            } else {
-                console.error("Error:", response.statusText);
-            }
-        } catch (error) {
-            console.error("Error submitting form:", error);
-        }
+    const onSubmit = (values) => {
+        const newCustomer = {
+            HN: values.HN,
+            'Customer ID': values['Customer ID'], 
+            Name: values.Name,
+            'Date of Birth': values['Date of Birth'], 
+            Gender: values.Gender,
+            'Contact Information': values['Contact Information'], 
+            'Requested Test': values['Requested Test'], 
+            'Sample Type': values['Sample Type'], 
+            'Date of Sample Collection': values['Date of Sample Collection'], 
+            'Test Results': values['Test Results'],
+            'Date of Test Completion': values['Date of Test Completion'], 
+            "Doctor's Name": values["Doctor's Name"], 
+            'Lab Technician': values['Lab Technician'], 
+            Remarks: values.Remarks,
+        };
+    
+        onAddCustomer(newCustomer);
+        onClose();
     };
 
     return (
         <>
             <Button type="primary" onClick={showDrawer}>
-                <PlusOutlined />
+            <PlusOutlined />
                 Add Customer
             </Button>
             <Drawer
@@ -80,13 +62,13 @@ const AddButton = ({ onAddCustomer }) => {
                 bodyStyle={{ paddingBottom: 80 }}
             >
                 <Form layout="vertical" form={form} id="add-customer-form" onFinish={onSubmit}>
-                    <Form.Item
-                        name="Card ID"
-                        label="Card ID"
-                        rules={[{ required: true, message: "Please enter Card ID" }]}
-                    >
-                        <Input placeholder="Please enter Card ID" />
-                    </Form.Item>
+                <Form.Item
+                                name="Card ID"
+                                label="Card ID"
+                                rules={[{ required: true, message: "Please enter Card ID" }]}
+                            >
+                                <Input placeholder="Please enter Card ID" />
+                            </Form.Item>
                     <Row gutter={16}>
                         <Col span={12}>
                             <Form.Item
@@ -130,13 +112,9 @@ const AddButton = ({ onAddCustomer }) => {
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Form.Item
-                        name="Address"
-                        label="Address"
-                        rules={[{ required: true, message: "Please enter your address" }]}
-                    >
-                        <TextArea rows={4} />
-                    </Form.Item>
+                            <Form.Item name="Address" label="Address"  rules={[{ required: true, message: "Please enter your address" }]}>
+                                <TextArea rows={4}  />
+                            </Form.Item>
                 </Form>
             </Drawer>
         </>

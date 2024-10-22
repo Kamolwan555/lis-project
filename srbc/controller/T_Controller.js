@@ -308,6 +308,108 @@ export const createMember = async (req, res) => {
   }
 }
 
+export const createMemberr = async (req, res) => {
+    // Log request body
+    console.log('Received request body:', req.body);
+
+    const {
+        card_id,
+        me_prefix = "mr.",
+        me_firstname,
+        me_lastname,
+        me_birthday = null,
+        me_religion = null,
+        me_ethnicity = null,
+        me_nationality = null,
+        me_gender,
+        me_status = "single",
+        me_blood = "A",
+        me_address = null,
+        me_subdistric = null,
+        me_distric = null,
+        me_province = null,
+        me_postalcode = null,
+        me_phone,
+        me_email = null,
+        me_drug = null,
+        me_disease = null
+    } = req.body;
+
+    try {
+        const client = await pool.connect();
+        console.log('Connected to database');  // ตรวจสอบการเชื่อมต่อ
+
+        const ress = await client.query('SELECT MAX(Member_id) AS latest_id FROM member');
+        const latestId = ress.rows[0].latest_id;
+        const newId = (latestId || 0) + 1;
+
+        const query = `
+            INSERT INTO member (
+                member_id,
+                card_id,
+                me_prefix,
+                me_firstname,
+                me_lastname,
+                me_birthday,
+                me_religion,
+                me_ethnicity,
+                me_nationality,
+                me_gender,
+                me_status,
+                me_blood,
+                me_address,
+                me_subdistric,
+                me_distric,
+                me_province,
+                me_postalcode,
+                me_phone,
+                me_email,
+                me_drug,
+                me_disease
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING *;
+        `;
+
+        // Log the values being inserted
+        const values = [
+            newId,
+            card_id,
+            me_prefix,
+            me_firstname,
+            me_lastname,
+            me_birthday || null,
+            me_religion,
+            me_ethnicity || null,
+            me_nationality || null,
+            me_gender,
+            me_status,
+            me_blood,
+            me_address || null,
+            me_subdistric || null,
+            me_distric || null,
+            me_province || null,
+            me_postalcode || null,
+            me_phone,
+            me_email || null,
+            me_drug || null,
+            me_disease || null
+        ];
+        console.log('Inserting values:', values);
+
+        const result = await client.query(query, values);
+        res.status(201).json({
+            success: true,
+            data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
+        });
+    } catch (error) {
+        console.error('Error inserting member:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
+        res.status(500).json({
+            success: false,
+            message: 'Error inserting member',
+            error: error.message,
+        });
+    }
+}
+
 export const updateMember = async (req, res) => {
     const {
         member_id,

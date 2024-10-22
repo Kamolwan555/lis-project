@@ -1,11 +1,13 @@
 import express from 'express';
-import { getUsers, createMember, updateMember, deleteMember, getLabTest, createLabTest, updateLabTest, deleteLabTest, getAppointment, Appointment } from '../controller/T_Controller.js';
+import { getUsers, createMember, createMemberr, updateMember, deleteMember, getLabTest, createLabTest, updateLabTest, deleteLabTest, getAppointment, Appointment } from '../controller/T_Controller.js';
 
 const router = express.Router();
 
 // จัดการ Member
 router.get('/getUser', getUsers)
 router.post('/createUser', createMember)
+router.post('/createMemberr', createMemberr)
+
 router.put('/updateMember/:member_id', updateMember)
 router.delete('/deleteMember/:member_id', deleteMember)
 
