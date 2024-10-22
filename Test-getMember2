@@ -80,28 +80,43 @@ const fetchData = () => {
     }
 };
 
-const fetchTestData = () => {
-    axios.get('http://localhost:3000/TechMedi/getTest')
-        .then((response) => {
-            const result = response.data; // ใช้ result ที่นี่
+const fetchTestData = (pagination) => {
+    setLoading(true);
+    const { current, pageSize } = pagination || tableParams.pagination;
 
-            // ตรวจสอบว่า result มีข้อมูลที่ต้องการ
-            if (result && result.LabTest_ID && result.LabTest_ID.length > 0) {
-                const apiTestData = result.LabTest_ID.map((id, index) => ({
-                    'Requested Test': result.TestName[index],
-                    'Sample Type': result.TestType[index] || 'ไม่ระบุ',
-                    'Test Costs': result.TestPrice[index] !== undefined ? result.TestPrice[index] : 0,
-                }));
+    axios.get('http://localhost:3000/TechMedi/getTest', {
+        params: { page: current, pageSize }, // ส่งพารามิเตอร์การแบ่งหน้าไปกับ API request
+    })
+    .then((response) => {
+        const result = response.data;
 
-                setTestData(apiTestData); // ตั้งค่าให้กับ state
-            } else {
-                console.error("No valid test data found in the response:", result);
-                setTestData([]); // ตั้งค่าให้เป็นอาร์เรย์ว่างถ้าไม่มีข้อมูล
-            }
-        })
-        .catch((error) => {
-            console.error("Error fetching test data from API:", error);
-        });
+        if (result && result.TESTID && result.TESTID.length > 0) {
+            const apiTestData = result.TESTID.map((id, index) => ({
+                'Requested Test': result.TestName[index],
+                'Sample Type': result.TestType[index] || 'ไม่ระบุ',
+                'Test Costs': result.TestPrice[index] !== undefined ? result.TestPrice[index] : 0,
+                'Test ID': id
+            }));
+
+            setTestData(apiTestData);
+            setLoading(false);
+            setTableParams({
+                ...tableParams,
+                pagination: {
+                    ...tableParams.pagination,
+                    total: result.totalItems || apiTestData.length, // ตั้งค่าจำนวนข้อมูลทั้งหมด
+                },
+            });
+        } else {
+            console.error("No valid test data found in the response:", result);
+            setTestData([]);
+            setLoading(false);
+        }
+    })
+    .catch((error) => {
+        console.error("Error fetching test data from API:", error);
+        setLoading(false);
+    });
 };
 
 const handleSearch = (value) => {
@@ -118,23 +133,28 @@ Object.values(record).some((field) =>
 )
 );
 
-useEffect(() => {
-fetchData(); // Call fetchData
-fetchTestData();
-}, [tableParams.pagination?.current, tableParams.pagination?.pageSize]);
-
 const handleTableChange = (pagination, filters, sorter) => {
-setTableParams({
-    pagination,
-    filters,
-    sortOrder: Array.isArray(sorter) ? undefined : sorter.order,
-    sortField: Array.isArray(sorter) ? undefined : sorter.field,
-});
+    setTableParams({
+        pagination,
+        filters,
+        sortOrder: Array.isArray(sorter) ? undefined : sorter.order,
+        sortField: Array.isArray(sorter) ? undefined : sorter.field,
+    });
 
-if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-    setData([]);
-}
+    if (activeTab === "1") {
+        fetchData(pagination); // Fetch customer data
+    } else if (activeTab === "2") {
+        fetchTestData(pagination); // Fetch test data
+    }
 };
+
+useEffect(() => {
+    if (activeTab === "1") {
+        fetchData(); // Fetch customer data when tab changes
+    } else if (activeTab === "2") {
+        fetchTestData(); // Fetch test data when tab changes
+    }
+}, [tableParams.pagination?.current, tableParams.pagination?.pageSize]);
 
 const handleAddCustomer = (customer) => {
 setData((prevData) => [...prevData, customer]);
@@ -207,37 +227,23 @@ operationColumn,
 
 const testColumns = [
 {
+    title: "Test ID", // เพิ่มชื่อคอลัมน์
+    dataIndex: "Test ID", // ตั้งค่า dataIndex เป็น Test ID
+    key: "Test ID", // ตั้งค่า key เป็น Test ID
+    width: "10%", // ขนาดของคอลัมน์
+},
+{
     title: "Requested Test",
     dataIndex: "Requested Test",
     key: "Requested Test",
     width: "30%",
-    filters: [
-    { text: "Ultrasound", value: "Ultrasound" },
-    { text: "CT Scan", value: "CT Scan" },
-    { text: "MRI", value: "MRI" },
-    { text: "X-Ray", value: "X-Ray" },
-    { text: "Blood Test", value: "Blood Test" },
-    ],
-    onFilter: (value, record) => record["Requested Test"] === value,
 },
 {
     title: "Sample Type",
     dataIndex: "Sample Type",
     key: "Sample Type",
     width: "30%",
-    filters: [
-    { text: "Blood", value: "Blood" },
-    { text: "Urine", value: "Urine" },
-    { text: "Saliva", value: "Saliva" },
-    ],
-    onFilter: (value, record) => record["Sample Type"] === value,
-},
-{
-    title: "Price",
-    dataIndex: "Test Costs",
-    key: "Test Costs",
-    width: "30%",
-    render: (cost) => `฿${cost.toFixed(2)}`,
+
 },
 operationColumn, // Add operation column
 ];
