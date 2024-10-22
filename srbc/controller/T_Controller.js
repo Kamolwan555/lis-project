@@ -3,10 +3,28 @@ import pool from '../../db.js';
 export const getUsers = async (req,res) =>{
     try {
         const client = await pool.connect();
-        const result = await client.query('SELECT * From Member');
-        const me_gender = result.rows.map(row => row.me_gender);
+        const result = await client.query(`
+            SELECT *, 
+              me_firstname || ' ' || me_lastname AS me_name, 
+              me_address || ' ' || me_subdistric || ' ' || me_province || ' ' || me_postalcode AS me_contact 
+            FROM member
+          `);
+        
+        const card_id = result.rows.map(row => row.card_id);
+        const name = result.rows.map(row => row.me_name);
+        const birthday = result.rows.map(row => row.me_birthday);
+        const gender = result.rows.map(row => row.me_gender);
+        const contact_infromation = result.rows.map(row => row.me_contact);
 
-        res.json(result.rows);
+        const MemberTable = {
+            card_id,
+            name,
+            birthday,
+            gender,
+            contact_infromation
+        }
+        
+        res.json(MemberTable);
         client.release();
     
       } catch (err) {
