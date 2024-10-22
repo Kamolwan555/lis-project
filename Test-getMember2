@@ -46,11 +46,11 @@ const fetchData = () => {
                 }
 
                 // ตรวจสอบข้อมูลการทดสอบ
-                if (testResult && testResult.labtest_name && testResult.labtest_name.length > 0) {
-                    const apiTestData = testResult.labtest_name.map((name, index) => ({
+                if (testResult && testResult.TestName && testResult.TestName.length > 0) {
+                    const apiTestData = testResult.TestName.map((name, index) => ({
                         'Requested Test': name,
-                        'Sample Type': testResult.labtest_type[index],
-                        'Test Costs': testResult.labtest_price[index],
+                        'Sample Type': testResult.TestType[index],
+                        'Test Costs': testResult.TestPrice[index],
                     }));
 
                     setTestData(apiTestData); // ตั้งค่าให้กับ state สำหรับข้อมูลการทดสอบ
