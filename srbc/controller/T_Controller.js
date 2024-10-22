@@ -38,7 +38,18 @@ export const getLabTest = async (req,res) =>{
         const client = await pool.connect();
         const result = await client.query('SELECT * From LabTest');
 
-        res.json(result.rows);
+        const TestName = result.rows.map(row => row.labtest_name); 
+        const TestType = result.rows.map(row => row.labtest_type); 
+        const TestPrice = result.rows.map(row => row.labtest_price);
+
+
+        const LabTest = {
+            TestName,
+            TestType,
+            TestPrice
+        }
+
+        res.json(LabTest);
         client.release();
     
       } catch (err) {
