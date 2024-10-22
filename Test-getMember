@@ -1,0 +1,50 @@
+const fetchData = () => {
+    setLoading(true);
+    const useMockData = false; // ปิดการใช้ mock data
+
+    if (useMockData) {
+        setData(mockData);
+        setLoading(false);
+        setTableParams({
+            ...tableParams,
+            pagination: {
+                ...tableParams.pagination,
+                total: mockData.length,
+            },
+        });
+    } else {
+        axios.get('http://localhost:3000/TechMedi/getUser')
+        .then((response) => {
+            const result = response.data;
+    
+            // ตรวจสอบว่า result มีข้อมูลที่ต้องการ
+            if (result && result.card_id && result.card_id.length > 0) {
+                const apiData = result.card_id.map((id, index) => ({
+                    'Customer ID': id,
+                    'Name': result.name[index],
+                    'Date of Birth': result.birthday[index],
+                    'Gender': result.gender[index],
+                    'Contact Information': result.contact_infromation[index], // แก้คำผิดจาก contact_information
+                }));
+    
+                setData(apiData); // ตั้งค่าให้กับ state
+                setLoading(false);
+                setTableParams({
+                    ...tableParams,
+                    pagination: {
+                        ...tableParams.pagination,
+                        total: apiData.length, // ใช้จำนวนข้อมูลจาก API
+                    },
+                });
+            } else {
+                console.error("No valid data found in the response:", result);
+                setData([]); // ตั้งค่าให้เป็นอาร์เรย์ว่างถ้าไม่มีข้อมูล
+                setLoading(false);
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching data from API:", error);
+            setLoading(false);
+        });
+    }
+};
