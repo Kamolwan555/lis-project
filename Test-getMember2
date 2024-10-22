@@ -1,0 +1,68 @@
+const fetchData = () => {
+    setLoading(true);
+    const useMockData = false; // ปิดการใช้ mock data
+
+    if (useMockData) {
+        setData(mockData);
+        setLoading(false);
+        setTableParams({
+            ...tableParams,
+            pagination: {
+                ...tableParams.pagination,
+                total: mockData.length,
+            },
+        });
+    } else {
+        // เริ่มต้นการดึงข้อมูลทั้งลูกค้าและข้อมูลการทดสอบ
+        const userPromise = axios.get('http://localhost:3000/TechMedi/getUser');
+        const testPromise = axios.get('http://localhost:3000/TechMedi/getTest');
+
+        Promise.all([userPromise, testPromise])
+            .then(([userResponse, testResponse]) => {
+                const userResult = userResponse.data;
+                const testResult = testResponse.data;
+
+                // ตรวจสอบข้อมูลลูกค้า
+                if (userResult && userResult.card_id && userResult.card_id.length > 0) {
+                    const apiData = userResult.card_id.map((id, index) => ({
+                        'Customer ID': id,
+                        'Name': userResult.name[index],
+                        'Date of Birth': userResult.birthday[index],
+                        'Gender': userResult.gender[index],
+                        'Contact Information': userResult.contact_infromation[index], // แก้คำผิดจาก contact_information
+                    }));
+
+                    setData(apiData); // ตั้งค่าให้กับ state
+                    setTableParams({
+                        ...tableParams,
+                        pagination: {
+                            ...tableParams.pagination,
+                            total: apiData.length, // ใช้จำนวนข้อมูลจาก API
+                        },
+                    });
+                } else {
+                    console.error("No valid customer data found in the response:", userResult);
+                    setData([]); // ตั้งค่าให้เป็นอาร์เรย์ว่างถ้าไม่มีข้อมูล
+                }
+
+                // ตรวจสอบข้อมูลการทดสอบ
+                if (testResult && testResult.labtest_name && testResult.labtest_name.length > 0) {
+                    const apiTestData = testResult.labtest_name.map((name, index) => ({
+                        'Requested Test': name,
+                        'Sample Type': testResult.labtest_type[index],
+                        'Test Costs': testResult.labtest_price[index],
+                    }));
+
+                    setTestData(apiTestData); // ตั้งค่าให้กับ state สำหรับข้อมูลการทดสอบ
+                } else {
+                    console.error("No valid test data found in the response:", testResult);
+                    setTestData([]); // ตั้งค่าให้เป็นอาร์เรย์ว่างถ้าไม่มีข้อมูล
+                }
+                setLoading(false); // เปลี่ยนสถานะการโหลดเป็น false
+            })
+            .catch((error) => {
+                console.error("Error fetching data from API:", error);
+                setLoading(false);
+            });
+    }
+};
