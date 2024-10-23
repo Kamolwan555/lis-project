@@ -1,5 +1,7 @@
 import express from 'express';
-import { getOrders, handleCreateOrder, editorderselection, createOrderLab, createOrderSelection, DoctorAppointment } from '../controller/P_Controller.js';
+import { getOrders, handleCreateOrder, editorderselection, createOrderLab, createOrderSelection, DoctorAppointment, 
+         editAppointment 
+} from '../controller/P_Controller.js';
 
 const router = express.Router();
 
@@ -11,6 +13,7 @@ router.post('/test2', createOrderSelection) // test สร้าง orderlabsele
 router.post('/test4', DoctorAppointment) // test สร้าง appointment
 router.post('/addOrderLab', handleCreateOrder) // path สร้าง orderlab และ order selection และหมอนัดให้
 
-router.put('/orderselection/:orderlab_id', editorderselection)
+router.put('/editorderselection/:orderlab_id', editorderselection)
+router.put('/editappointment/:app_id', editAppointment )
 
 export default router;

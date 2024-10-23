@@ -1672,6 +1672,55 @@ export const DoctorAppointmentt = async (newId, card_id, res) => {
     }
 }
 
+export const editAppointment = async (req,res) => {
+    const { app_id } = req.params;
+    const {
+        member_id,
+        app_appointdate,
+        app_appointtime
+    } = req.body;
+    try {
+        const query = `
+            UPDATE appointment
+            SET
+                member_id = $1,
+                app_appointdate = $2,
+                app_appointtime = $3,
+                app_acceptdate = current_timestamp
+            WHERE app_id = $4
+            RETURNING *;
+        `;
+
+        const values = [
+            member_id || null,
+            app_appointdate,
+            app_appointtime,
+            app_id
+        ];
+
+        const result = await pool.query(query, values);
+        
+        if (result.rowCount === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'LabTest not found',
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: result.rows[0], // คืนค่าข้อมูล LabTest ที่ถูกอัปเดต
+        });
+    } catch (error) {
+        console.error('Error updating LabTest:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error updating LabTest',
+            error: error.message,
+        });
+    }
+}
+
 //สร้าง orderlab และ orderselection แบบ ลิงก์ orderalab_id pk กัน และแก้ไข orderselection ได้
 export const handleCreateOrder = async (req,res) => {
     try {
