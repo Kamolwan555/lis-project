@@ -115,6 +115,7 @@ return (
         >
             <Form.Item
             label="Order ID"
+            name="Order ID"
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             style={{ marginBottom: "10px" }}
@@ -125,6 +126,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Medical License Number"
+                name="Medical License Number"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -139,6 +141,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Doctor's Name"
+                name="Doctor's Name"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -155,6 +158,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Email Address"
+                name="Email Address"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -167,6 +171,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Phone Number"
+                name="Phone Number"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -181,6 +186,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Date of Order"
+                name="Date of Order"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -194,6 +200,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Time of Order"
+                name="Time of Order"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -207,6 +214,7 @@ return (
             </Row>
             <Form.Item
             label="Special Notes"
+            name="Special Notes"
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             style={{ marginBottom: "10px" }}
@@ -251,6 +259,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Card ID"
+                name="Card ID"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -265,6 +274,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Name"
+                name="Name"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -281,6 +291,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Date of Birth"
+                name="Date of Birth"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -294,6 +305,7 @@ return (
             <Col span={12}>
                 <Form.Item
                 label="Gender"
+                name="Gender"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
                 style={{ marginBottom: "10px" }}
@@ -332,6 +344,7 @@ return (
         >
             <Form.Item
             label="Medical History"
+            name="Medical History"
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
             style={{ marginBottom: "10px" }}
