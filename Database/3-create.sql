@@ -8,11 +8,8 @@ CREATE TABLE PackageLabDetail (
 
 CREATE TABLE OrderSelection (
     OrderLab_ID INT NOT NULL,
-    Member_ID INT NOT NULL,
+    Member_ID INT,
     Card_ID CHAR(13) NOT NULL,
-    Me_Prefix VARCHAR(1) NOT NULL,
-    Me_FirstName VARCHAR(1) NOT NULL,
-    Me_LastName VARCHAR(1) NOT NULL,
     CBC BOOLEAN NOT NULL,
     Hematocrit BOOLEAN NOT NULL,
     ESR BOOLEAN NOT NULL,
