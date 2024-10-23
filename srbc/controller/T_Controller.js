@@ -572,3 +572,7 @@ export const Appointment = async (req,res) =>{
         res.send('Error ' + err);
       }
 }
+
+export const AccepetAppointment = async (req,res) => {
+
+}
