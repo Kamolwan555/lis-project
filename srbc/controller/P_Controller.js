@@ -1020,6 +1020,7 @@ export const createOrderSelection = async (newId,card_id,res) => {
         });
 
         client.release();
+        return result.rows[0];  // คืนค่าข้อมูลที่ถูก insert
 
     } catch (error) {
         console.error('Error creating orderselection:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
@@ -1607,6 +1608,7 @@ export const DoctorAppointment = async (req,res) => {
             success: true,
             data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
         });
+
         client.release();
 
     } catch (error) {
@@ -1628,7 +1630,7 @@ export const DoctorAppointmentt = async (newId, card_id, res) => {
 
         const ress = await client.query('SELECT MAX(app_id) AS latest_id FROM appointment');
         const latestId = ress.rows[0].latest_id;
-        const app_lastid = (latestId || 0) + 1;
+        const appnewid = (latestId || 0) + 1;
 
         const query = `
             INSERT INTO appointment (
@@ -1644,7 +1646,7 @@ export const DoctorAppointmentt = async (newId, card_id, res) => {
 
         // Log the values being inserted
         const values = [
-            app_lastid,
+            appnewid,
             newId,
             null,
             card_id,
@@ -1660,7 +1662,7 @@ export const DoctorAppointmentt = async (newId, card_id, res) => {
         });
 
         client.release();
-        return { newId,card_id };
+        return { appnewid, data: result.rows[0] };
 
     } catch (error) {
         console.error('Error creating order:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
@@ -1721,20 +1723,70 @@ export const editAppointment = async (req,res) => {
     }
 }
 
+export const formAcceptAppoint = async (appnewid, res) => {
+    try {
+        const client = await pool.connect();
+        console.log('Connected to database');  // ตรวจสอบการเชื่อมต่อ
+
+        const ress = await client.query('SELECT MAX(acp_id) AS latest_id FROM accept_appointment');
+        const latestId = ress.rows[0].latest_id;
+        const acpnewid = (latestId || 0) + 1;
+
+        const query = `
+            INSERT INTO appointment (
+                acp_id,
+                app_id,
+                acp_status,
+                acp_acceptdate
+            ) VALUES ($1, $2, $3, current_timestamp) RETURNING *;
+        `;
+
+        // Log the values being inserted
+        const values = [
+            acpnewid,
+            appnewid,
+            "Don't Accept"
+        ];
+        console.log('Inserting values:', values);
+        
+        const result = await client.query(query, values);
+        res.status(201).json({
+            success: true,
+            data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
+        });
+
+        client.release();
+
+    } catch (error) {
+        console.error('Error creating order:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
+        res.status(500).json({
+            success: false,
+            message: 'Error creating order',
+            error: error.message,
+        });
+    }
+}
+
 //สร้าง orderlab และ orderselection แบบ ลิงก์ orderalab_id pk กัน และแก้ไข orderselection ได้
-export const handleCreateOrder = async (req,res) => {
+export const handleCreateOrder = async (req, res) => {
     try {
         // สร้าง Order Lab และส่งค่ากลับ
         const { newId, card_id } = await createOrderLab(req, res);
         console.log('createOrderLab เสร็จแล้ว');
 
-        // สร้าง Order Selection โดยใช้ค่าที่ส่งมา
-        const orderSelection = await createOrderSelection(newId, card_id, res);
+        // ใช้ Promise.all เพื่อทำงานของ orderSelection และ DoctorAppointmentt พร้อมกัน
+        const [orderSelection, DoctorAppointmentt] = await Promise.all([
+            createOrderSelection(newId, card_id),  // ไม่ต้องส่ง res ที่นี่
+            DoctorAppointmentt(newId, card_id)     // ไม่ต้องส่ง res ที่นี่
+        ]);
+
         console.log('createOrderSelection เสร็จแล้ว');
+        console.log('DoctorAppointmentt เสร็จแล้ว');
 
-        const DoctorAppointmentt = await DoctorAppointmentt(newId, card_id, res);
-        console.log('DoctorAppointmentt  เสร็จแล้ว');
-
+        const { appnewid } = DoctorAppointmentt;
+        const formAcceptAppoint = await formAcceptAppoint(appnewid);
+        console.log('formAcceptAppoint เสร็จแล้ว');
+        
         res.status(201).json({
             success: true,
             orderSelection,
@@ -1750,3 +1802,4 @@ export const handleCreateOrder = async (req,res) => {
         });
     }
 };
+
