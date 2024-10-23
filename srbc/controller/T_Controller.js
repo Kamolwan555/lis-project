@@ -1221,3 +1221,103 @@ export const editrecordlab = async (req,res) => {
         });
     }
 }
+
+export const createLabAccept = async (req,res) => {
+    const { recordlab_id, employee_id } = req.params; 
+    const {
+        labaccept_descrip
+    } = req.body
+
+    try {
+        const client = await pool.connect();
+        console.log('Connected to database');  // ตรวจสอบการเชื่อมต่อ
+
+        const ress = await client.query('SELECT MAX(labaccept_id) AS latest_id FROM labaccept');
+        const latestId = ress.rows[0].latest_id;
+        const newId = (latestId || 0) + 1;
+
+        const query = `
+            INSERT INTO labaccept (
+                labaccept_id,
+                recordlab_id,
+                labaccept_descrip,
+                employee_id,
+                employee_name,
+                labaccept_date
+            ) VALUES ($1, $2, $3, $4, $5, current_timestamp ) RETURNING *;
+        `;
+
+        // Log the values being inserted
+        const values = [
+            newId,
+            recordlab_id,
+            labaccept_descrip,
+            employee_id,
+            "Mister A"
+        ];
+        console.log('Inserting values:', values);
+
+        const result = await client.query(query, values);
+        res.status(201).json({
+            success: true,
+            data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
+        });
+    } catch (error) {
+        console.error('Error inserting LabAccept:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
+        res.status(500).json({
+            success: false,
+            message: 'Error inserting member',
+            error: error.message,
+        });
+    }
+}
+
+export const createLabReport = async (req,res) => {
+    const { employee_id, labaccept_id } = req.params; 
+    const {
+        reportlab_descrip
+    } = req.body
+
+    try {
+        const client = await pool.connect();
+        console.log('Connected to database');  // ตรวจสอบการเชื่อมต่อ
+
+        const ress = await client.query('SELECT MAX(reportlab_id) AS latest_id FROM reportlab');
+        const latestId = ress.rows[0].latest_id;
+        const newId = (latestId || 0) + 1;
+
+        const query = `
+            INSERT INTO reportlab (
+                reportlab_id,
+                labaccept_id,
+                reportlab_descrip,
+                employee_id,
+                employee_name,
+                reportlab_date
+            ) VALUES ($1, $2, $3, $4, $5, current_timestamp ) RETURNING *;
+        `;
+
+        // Log the values being inserted
+        const values = [
+            newId,
+            labaccept_id,
+            reportlab_descrip,
+            employee_id,
+            "Mister B"
+        ];
+        console.log('Inserting values:', values);
+
+        const result = await client.query(query, values);
+        res.status(201).json({
+            success: true,
+            data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
+        });
+    } catch (error) {
+        console.error('Error inserting LabAccept:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
+        res.status(500).json({
+            success: false,
+            message: 'Error inserting member',
+            error: error.message,
+        });
+    }
+}
