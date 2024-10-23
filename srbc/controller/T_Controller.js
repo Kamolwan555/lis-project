@@ -615,6 +615,7 @@ export const Appointment = async (req,res) =>{
     }
 }
 
+//สร้างการยืนยัน + สร้างฟอร์ม record ไว้รอกรอกผล
 export const AccepetAppointment = async (req,res) => {
     const { app_id } = req.params;
     const {
@@ -647,18 +648,45 @@ export const AccepetAppointment = async (req,res) => {
         console.log('Inserting Acception Appointment:', values);
         
         const result = await client.query(query, values);
+        const acp_id = result.rows[0].acp_id
+
+        const ressRecord = await client.query('SELECT MAX(recordlab_id) AS latest_id FROM recordlab');
+        const latestIdRecord = ressRecord.rows[0].latest_id;
+        const newIdRecord = (latestIdRecord || 0) + 1;
+
+        const recordLabQuery = `
+            INSERT INTO RecordLab (
+                RecordLab_ID,
+                acp_id
+                
+            ) VALUES ($1, $2) RETURNING *;
+        `;
+
+        const recordLabValues = [
+            newIdRecord, 
+            acp_id 
+        ];
+        
+        console.log('Inserting into RecordLab:', recordLabValues);
+        const recordLabResult = await client.query(recordLabQuery, recordLabValues);
+
+        // ส่งผลลัพธ์ทั้งหมดกลับไป
         res.status(201).json({
             success: true,
-            data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
+            data: {
+                appointment: result.rows[0],  // ข้อมูลที่สร้างใน accept_appointment
+                recordLab: recordLabResult.rows[0] // ข้อมูลที่สร้างใน RecordLab
+            },
         });
-        client.release();
-
+        
     } catch (error) {
-        console.error('Error creating appoinment:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
+        console.error('Error creating appointment:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
         res.status(500).json({
             success: false,
-            message: 'Error creating appoinment',
+            message: 'Error creating appointment',
             error: error.message,
         });
+    } finally {
+        client.release(); // ปล่อยการเชื่อมต่อ
     }
 }
