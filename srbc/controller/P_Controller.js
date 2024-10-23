@@ -33,11 +33,12 @@ export const getOrders = async (req,res) =>{
       }
 }
 
+//สร้าง orderlab
 export const createOrderLab = async (req,res) =>{
     const {
         physician_id,
         card_id,
-        physician_name ,
+        physician_name,
         emergency_case,
         orderdate,
         orderstatus
@@ -50,17 +51,16 @@ export const createOrderLab = async (req,res) =>{
         const ress = await client.query('SELECT MAX(orderlab_id) AS latest_id FROM orderlab');
         const latestId = ress.rows[0].latest_id;
         const newId = (latestId || 0) + 1;
-        const cardId = card_id;
 
         const query = `
             INSERT INTO orderlab (
-                order_id,
+                orderlab_id,
                 physician_id,
                 card_id,
                 physician_name,
                 emergency_case,
                 orderdate,
-                orderstatus
+                orderlabstatus
             ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
         `;
 
@@ -95,15 +95,16 @@ export const createOrderLab = async (req,res) =>{
     }
 }
 
-export const createOrderSelection = async (req,res,newId,card_id) => {
-
+//สร้าง orderselection แบบรับค่า newId(orderlab_id) มา
+export const createOrderSelection = async (newId,card_id,res) => {
     try {
         const client = await pool.connect();
         console.log('Connected to database');  // ตรวจสอบการเชื่อมต่อ
 
         const query = `
             INSERT INTO orderselection (
-                order_id,
+                orderlab_id,
+                member_id,
                 card_id,
                 CBC,
                 Hematocrit,
@@ -268,12 +269,29 @@ export const createOrderSelection = async (req,res,newId,card_id) => {
                 Protein_S,
                 Anti_DNaseB,
                 TB_culture
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 
+                $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, 
+                $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, 
+                $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, 
+                $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, 
+                $51, $52, $53, $54, $55, $56, $57, $58, $59, $60, 
+                $61, $62, $63, $64, $65, $66, $67, $68, $69, $70, 
+                $71, $72, $73, $74, $75, $76, $77, $78, $79, $80, 
+                $81, $82, $83, $84, $85, $86, $87, $88, $89, $90, 
+                $91, $92, $93, $94, $95, $96, $97, $98, $99, $100, 
+                $101, $102, $103, $104, $105, $106, $107, $108, $109, $110, 
+                $111, $112, $113, $114, $115, $116, $117, $118, $119, $120, 
+                $121, $122, $123, $124, $125, $126, $127, $128, $129, $130, 
+                $131, $132, $133, $134, $135, $136, $137, $138, $139, $140, 
+                $141, $142, $143, $144, $145, $146, $147, $148, $149, $150, 
+                $151, $152, $153, $154, $155, $156, $157, $158, $159, $160, 
+                $161, $162, $163, $164, $165, $166) RETURNING *;
         `;
 
         // Log the values being inserted
         const values = [
             newId,
+            null,
             card_id,
             "F",
             "F",
@@ -457,21 +475,32 @@ export const createOrderSelection = async (req,res,newId,card_id) => {
     }
 }
 
-export const handleCreateOrder = async () => {
+//สร้าง orderlab และ orderselection แบบ ลิงก์ orderalab_id pk กัน
+export const handleCreateOrder = async (req,res) => {
     try {
-      // เรียกใช้ createOrderLab ก่อน
-      await createOrderLab();
-      console.log('createOrderLab เสร็จแล้ว');
-  
-      // หลังจาก createOrderLab เสร็จเรียก createOrderSelection
-      await createOrderSelection();
-      console.log('createOrderSelection เสร็จแล้ว');
+        // สร้าง Order Lab และส่งค่ากลับ
+        const { newId, card_id } = await createOrderLab(req, res);
+        console.log('createOrderLab เสร็จแล้ว');
+
+        // สร้าง Order Selection โดยใช้ค่าที่ส่งมา
+        const orderSelection = await createOrderSelection(newId, card_id, res);
+        console.log('createOrderSelection เสร็จแล้ว');
+
+        res.status(201).json({
+            success: true,
+            orderSelection,
+        });
 
     } catch (error) {
-      console.error('เกิดข้อผิดพลาด:', error);
+        console.error('เกิดข้อผิดพลาด:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error handling order creation',
+            error: error.message,
+        });
     }
-  };
+};
 
-  export const editorderselection = async (req,res) => {
-    
-  }
+export const editorderselection = async (req,res) => {
+
+}
