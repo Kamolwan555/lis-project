@@ -7,7 +7,7 @@ const router = express.Router();
 
 // จัดการ Member
 router.get('/getUser', getUsers)
-router.post('/createUser', createMember)
+router.post('/createMember', createMember)
 router.post('/createMemberr', createMemberr)
 
 router.put('/updateMember/:member_id', updateMember)

@@ -1,0 +1,32 @@
+localhost:3000/Physician/getOrders เรียกข้อมูล order
+localhost:3000/Physician/test สร้าง orderlab เฉยๆ
+{
+        "physician_id": "1",
+        "card_id": "1234567890123",
+        "physician_name": "Dr. Adams",
+        "emergency_case": "T",
+        "orderdate": "1985-12-25",
+        "orderstatus": "" 
+}
+
+localhost:3000/Physician/test2 สร้าง orderselection ไว้เลือกการตรวจ
+
+localhost:3000/Physician/test4 สร้างนัดของหมอ
+    {
+        "orderlab_id": "2",
+        "member_id": "",
+        "cardd_id": "1234567890123",
+        "app_appointdate": "2023-10-25",
+        "app_appointtime": "15:00:00"
+    }
+
+localhost:3000/Physician/addOrderLab สร้าง orderlab และ order selection ทีเดียว
+{
+        "physician_id": "1",
+        "card_id": "1234567890123",
+        "physician_name": "Dr. Adams",
+        "emergency_case": "T",
+        "orderdate": "1985-12-25",
+        "orderstatus": "" 
+}
+

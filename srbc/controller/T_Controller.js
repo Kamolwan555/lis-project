@@ -412,8 +412,8 @@ export const createMemberr = async (req, res) => {
 }
 
 export const updateMember = async (req, res) => {
+    const { member_id } = req.params;
     const {
-        member_id,
         card_id,
         me_prefix,
         me_firstname,
