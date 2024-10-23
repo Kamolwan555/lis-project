@@ -616,5 +616,49 @@ export const Appointment = async (req,res) =>{
 }
 
 export const AccepetAppointment = async (req,res) => {
+    const { app_id } = req.params;
+    const {
+        Accept
+    } = req.body;
 
+    try {
+        const client = await pool.connect();
+        console.log('Connected to database');  // ตรวจสอบการเชื่อมต่อ
+
+        const ress = await client.query('SELECT MAX(acp_id) AS latest_id FROM accept_appointment');
+        const latestId = ress.rows[0].latest_id;
+        const newId = (latestId || 0) + 1;
+
+        const query = `
+            INSERT INTO accept_appointment (
+                acp_id,
+                app_id,
+                acp_status,
+                acp_acceptdate
+            ) VALUES ($1, $2, $3, current_timestamp ) RETURNING *;
+        `;
+
+        // Log the values being inserted
+        const values = [
+            newId,
+            app_id,
+            Accept
+        ];
+        console.log('Inserting Acception Appointment:', values);
+        
+        const result = await client.query(query, values);
+        res.status(201).json({
+            success: true,
+            data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
+        });
+        client.release();
+
+    } catch (error) {
+        console.error('Error creating appoinment:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
+        res.status(500).json({
+            success: false,
+            message: 'Error creating appoinment',
+            error: error.message,
+        });
+    }
 }

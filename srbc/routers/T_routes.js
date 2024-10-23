@@ -21,7 +21,7 @@ router.delete('/deleteLab/:labTest_id', deleteLabTest)
 //จัดการเกี่ยวกับผลแลป
 router.get('/getAppointment', getAppointment)
 router.post('/Appointment', Appointment)
-router.put('/AccpetAppointment/:Acp_id', AccepetAppointment)
+router.post('/AccpetAppointment/:app_id', AccepetAppointment)
 //router.post('/AcceptAppointment', )
 //router.post('/RecordOrderLab/:RecordLab_ID', )
 //router.post('/LabAccept/:LabAccept_ID', )
