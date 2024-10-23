@@ -22,6 +22,8 @@ router.delete('/deleteLab/:labTest_id', deleteLabTest)
 router.get('/getAppointment', getAppointment)
 router.post('/Appointment', Appointment)
 router.post('/AccpetAppointment/:app_id', AccepetAppointment)
+
+router.put('/recordlab/:recordlab_id')
 //router.post('/AcceptAppointment', )
 //router.post('/RecordOrderLab/:RecordLab_ID', )
 //router.post('/LabAccept/:LabAccept_ID', )

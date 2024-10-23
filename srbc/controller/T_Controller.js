@@ -690,3 +690,5 @@ export const AccepetAppointment = async (req,res) => {
         client.release(); // ปล่อยการเชื่อมต่อ
     }
 }
+
+//แบบแก้ไขผลแลป put
