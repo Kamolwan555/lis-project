@@ -1321,3 +1321,31 @@ export const createLabReport = async (req,res) => {
         });
     }
 }
+
+export const getLabAccept = async (req,res) =>{
+    try {
+        const client = await pool.connect();
+        const result = await client.query('SELECT * From labaccept');
+
+        res.json(result.rows);
+        client.release();
+    
+      } catch (err) {
+        console.error(err);
+        res.send('Error ' + err);
+      }
+}
+
+export const getReportLab = async (req,res) =>{
+    try {
+        const client = await pool.connect();
+        const result = await client.query('SELECT * From reportlab');
+
+        res.json(result.rows);
+        client.release();
+    
+      } catch (err) {
+        console.error(err);
+        res.send('Error ' + err);
+      }
+}

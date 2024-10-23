@@ -1,7 +1,7 @@
 import express from 'express';
 import { getUsers, createMember, createMemberr, updateMember, deleteMember, getLabTest, createLabTest, 
     updateLabTest, deleteLabTest, getAppointment, Appointment, AccepetAppointment,
-    editrecordlab, createLabAccept, createLabReport  } from '../controller/T_Controller.js';
+    editrecordlab, createLabAccept, createLabReport, getReportLab, getLabAccept } from '../controller/T_Controller.js';
 
 const router = express.Router();
 
@@ -28,6 +28,9 @@ router.put('/recordlab/:recordlab_id', editrecordlab )
 
 router.post('/labaccept/:employee_id/:recordlab_id', createLabAccept)
 router.post('/labreport/:employee_id/:labaccept_id', createLabReport)
+
+router.get('/getReportLab', getReportLab)
+router.get('/getLabAccept', getLabAccept)
 
 //router.post('/AcceptAppointment', )
 //router.post('/RecordOrderLab/:RecordLab_ID', )
