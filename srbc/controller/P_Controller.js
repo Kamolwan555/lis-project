@@ -1020,7 +1020,6 @@ export const createOrderSelection = async (newId,card_id,res) => {
         });
 
         client.release();
-        return { newId,card_id };
 
     } catch (error) {
         console.error('Error creating orderselection:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
@@ -1621,15 +1620,7 @@ export const DoctorAppointment = async (req,res) => {
 }
 
 //path สร้าง orderselection แล้วหมอนัดเวลาต่อ
-export const DoctorAppointmentt = async (req,res,newId,card_id) => {
-    const {
-        app_id,
-        orderlab_id,
-        member_id,
-        cardd_id,
-        app_appointdate,
-        app_appointtime
-    } = req.body;
+export const DoctorAppointmentt = async (newId, card_id, res) => {
 
     try {
         const client = await pool.connect();
@@ -1637,28 +1628,28 @@ export const DoctorAppointmentt = async (req,res,newId,card_id) => {
 
         const ress = await client.query('SELECT MAX(app_id) AS latest_id FROM appointment');
         const latestId = ress.rows[0].latest_id;
-        const newId = (latestId || 0) + 1;
+        const app_lastid = (latestId || 0) + 1;
 
         const query = `
-            INSERT INTO orderlab (
+            INSERT INTO appointment (
                 app_id,
                 orderlab_id,
                 member_id,
                 card_id,
                 app_appointdate,
                 app_appointtime,
-                app_acceptdata
-            ) VALUES ($1, $2, $3, $4, $5, $6, current_timestamp ) RETURNING *;
+                app_acceptdate
+            ) VALUES ($1, $2, $3, $4, $5, $6, current_timestamp) RETURNING *;
         `;
 
         // Log the values being inserted
         const values = [
-            app_id,
-            orderlab_id,
-            member_id,
-            cardd_id,
-            app_appointdate,
-            app_appointtime
+            app_lastid,
+            newId,
+            null,
+            card_id,
+            "2000-01-01",
+            "00:00:00"
         ];
         console.log('Inserting values:', values);
         
@@ -1692,9 +1683,13 @@ export const handleCreateOrder = async (req,res) => {
         const orderSelection = await createOrderSelection(newId, card_id, res);
         console.log('createOrderSelection เสร็จแล้ว');
 
+        const DoctorAppointmentt = await DoctorAppointmentt(newId, card_id, res);
+        console.log('DoctorAppointmentt  เสร็จแล้ว');
+
         res.status(201).json({
             success: true,
             orderSelection,
+            DoctorAppointmentt
         });
 
     } catch (error) {

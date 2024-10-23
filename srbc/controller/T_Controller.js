@@ -116,7 +116,6 @@ export const createLabTest = async (req, res) => {
     }
 }
 
-
 export const updateLabTest = async (req, res) => {
     const { labTest_id } = req.params; // รับ labTest_id จาก URL parameters
     const {
@@ -560,17 +559,60 @@ export const getAppointment = async (req,res) =>{
 }
 
 export const Appointment = async (req,res) =>{
+    const {
+        orderlab_id,
+        member_id,
+        cardd_id,
+        app_appointdate,
+        app_appointtime
+    } = req.body;
+
     try {
         const client = await pool.connect();
-        const result = await client.query('SELECT * From Appointment');
+        console.log('Connected to database');  // ตรวจสอบการเชื่อมต่อ
 
-        res.json(result.rows);
+        const ress = await client.query('SELECT MAX(app_id) AS latest_id FROM appointment');
+        const latestId = ress.rows[0].latest_id;
+        const newId = (latestId || 0) + 1;
+
+        const query = `
+            INSERT INTO appointment (
+                app_id,
+                orderlab_id,
+                member_id,
+                card_id,
+                app_appointdate,
+                app_appointtime,
+                app_acceptdate
+            ) VALUES ($1, $2, $3, $4, $5, $6, current_timestamp ) RETURNING *;
+        `;
+
+        // Log the values being inserted
+        const values = [
+            newId,
+            orderlab_id,
+            member_id || null,
+            cardd_id,
+            app_appointdate,
+            app_appointtime
+        ];
+        console.log('Inserting values:', values);
+        
+        const result = await client.query(query, values);
+        res.status(201).json({
+            success: true,
+            data: result.rows[0],  // คืนค่าข้อมูลสมาชิกที่ถูกสร้าง
+        });
         client.release();
-    
-      } catch (err) {
-        console.error(err);
-        res.send('Error ' + err);
-      }
+
+    } catch (error) {
+        console.error('Error creating appoinment:', error);  // ตรวจสอบข้อผิดพลาดจากการ insert ข้อมูล
+        res.status(500).json({
+            success: false,
+            message: 'Error creating appoinment',
+            error: error.message,
+        });
+    }
 }
 
 export const AccepetAppointment = async (req,res) => {
